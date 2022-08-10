@@ -1,7 +1,9 @@
 import { Grid, GridItem, Heading } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import Profile from '../components/Profile';
+import RawSignals from '../components/RawSignals';
 import RythmMeasurement from '../components/RythmMeasurement';
+import VideoStream from '../components/VideoStream';
 import type { NextPage } from 'next';
 
 const H2 = ({ children }: { children: ReactNode }) => (
@@ -20,9 +22,11 @@ const Home: NextPage = () => {
         <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6}>
           <GridItem w="100%" h="10">
             <H2>Top Layer</H2>
+            <VideoStream />
           </GridItem>
           <GridItem w="100%" h="10">
             <H2>Measurement Layer</H2>
+            <RawSignals />
           </GridItem>
           <GridItem w="100%" h="10">
             <H2>Deep Layer</H2>

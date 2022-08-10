@@ -20,12 +20,16 @@
     "@emotion/styled": "^11.10.0",
     "@faker-js/faker": "^7.4.0",
     "chart.js": "^3.9.1",
+    "chartjs-adapter-luxon": "^1.2.0",
+    "chartjs-plugin-streaming": "^2.0.0",
     "framer-motion": "^7.0.0",
+    "luxon": "^3.0.1",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "react-youtube": "^9.0.3"
   },
   "devDependencies": {
     "-": "^0.0.1",
