@@ -8,7 +8,9 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import { Box } from '@chakra-ui/react';
+import { Box, Tooltip as CTooltip } from '@chakra-ui/react';
+import { BsQuestionCircle } from 'react-icons/bs';
+import { Icon } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -41,7 +43,15 @@ export const data = {
 
 const RythmMeasurement = () => {
   return (
-    <Box backgroundColor="#29293B">
+    <Box backgroundColor="#29293B" padding="10px">
+      <Box textAlign="right">
+        <CTooltip label="Some extra information" hasArrow>
+          <span>
+            <Icon as={BsQuestionCircle} color="text.dimmed" />
+          </span>
+        </CTooltip>
+      </Box>
+
       <Bar options={options} data={data} />
     </Box>
   );

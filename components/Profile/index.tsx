@@ -8,10 +8,10 @@ const Profile = () => {
   return (
     <Box backgroundColor="#0C091E" borderRadius="0 15px 15px 0" padding="30px">
       <Grid templateColumns="1fr 1fr 8fr 1fr" gap={6}>
-        <Icon as={BsThreeDotsVertical} boxSize={6} />
-        <Icon as={BsGearFill} boxSize={6} />
+        <Icon as={BsThreeDotsVertical} boxSize={6} cursor="pointer" />
+        <Icon as={BsGearFill} boxSize={6} cursor="pointer" />
         <Spacer />
-        <Icon as={BsXLg} boxSize={5} />
+        <Icon as={BsXLg} boxSize={5} cursor="pointer" />
       </Grid>
 
       <VStack color="text.dimmed" spacing={8} padding="30px 0">

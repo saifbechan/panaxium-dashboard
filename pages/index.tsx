@@ -12,27 +12,25 @@ const H2 = ({ children }: { children: ReactNode }) => (
 
 const Home: NextPage = () => {
   return (
-    <main>
-      <Grid templateColumns="1fr 4fr" gap={6}>
-        <GridItem w="100%" h="10" marginTop="20">
-          <Profile />
-        </GridItem>
-        <GridItem w="100%" h="10">
-          <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-            <GridItem w="100%" h="10">
-              <H2>Top Layer</H2>
-            </GridItem>
-            <GridItem w="100%" h="10">
-              <H2>Measurement Layer</H2>
-            </GridItem>
-            <GridItem w="100%" h="10">
-              <H2>Deep Layer</H2>
-              <RythmMeasurement />
-            </GridItem>
-          </Grid>
-        </GridItem>
-      </Grid>
-    </main>
+    <Grid templateColumns={{ base: '1fr', md: '1fr 4fr' }}>
+      <GridItem w="100%" marginTop="60px">
+        <Profile />
+      </GridItem>
+      <GridItem w="100%" padding="0 20px">
+        <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6}>
+          <GridItem w="100%" h="10">
+            <H2>Top Layer</H2>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <H2>Measurement Layer</H2>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <H2>Deep Layer</H2>
+            <RythmMeasurement />
+          </GridItem>
+        </Grid>
+      </GridItem>
+    </Grid>
   );
 };
 
