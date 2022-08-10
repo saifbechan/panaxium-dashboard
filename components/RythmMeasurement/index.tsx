@@ -1,15 +1,15 @@
-import { Box } from '@chakra-ui/react';
-import { faker } from '@faker-js/faker';
+import { Bar } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Box } from '@chakra-ui/react';
+import { faker } from '@faker-js/faker';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 

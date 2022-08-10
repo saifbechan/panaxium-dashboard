@@ -1,14 +1,72 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
+import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
+import { Icon } from '@chakra-ui/react';
+import Image from 'next/image';
+import sb from './saif-bechan-teaser-image-rounded-modified.png';
 
 const Profile = () => {
   return (
-    <Box backgroundColor="#0C091E">
-      <div>DATE: November 5, 2019</div>
-      <div>JOHN DOE</div>
+    <Box backgroundColor="#0C091E" borderRadius="0 15px 15px 0" padding="30px">
+      <Grid templateColumns="1fr 1fr 8fr 1fr" gap={6}>
+        <Icon as={BsThreeDotsVertical} boxSize={6} />
+        <Icon as={BsGearFill} boxSize={6} />
+        <Spacer />
+        <Icon as={BsXLg} boxSize={5} />
+      </Grid>
 
-      <div>Information about the patient</div>
+      <VStack color="text.dimmed" spacing={8} padding="30px 0">
+        <Text fontSize="lg">DATE: November 5, 2019</Text>
 
-      <div>ECOG Specifications</div>
+        <Box
+          boxSize="40"
+          backgroundColor="white"
+          borderRadius="50%"
+          border="4px solid white"
+          position="relative"
+        >
+          <Image src={sb} alt="avatar" layout="fill" />
+        </Box>
+
+        <Heading as="h1" size="xl">
+          Saif Bechan
+        </Heading>
+      </VStack>
+
+      <Box background="linear-gradient(to right, #2657bb, #45bdc8)" h={1} />
+
+      <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
+        Information about the patient:
+      </Text>
+      <VStack spacing={2} align="stretch">
+        <Box>
+          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
+            Weight
+          </Text>
+          <Text fontSize="md" fontWeight="bold">
+            70kg
+          </Text>
+        </Box>
+        <Box>
+          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
+            Height
+          </Text>
+          <Text fontSize="md" fontWeight="bold">
+            1.75 cm
+          </Text>
+        </Box>
+        <Box>
+          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
+            N
+          </Text>
+          <Text fontSize="md" fontWeight="bold">
+            09876
+          </Text>
+        </Box>
+      </VStack>
+
+      <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
+        ECOG Specifications
+      </Text>
     </Box>
   );
 };

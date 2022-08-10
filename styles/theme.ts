@@ -10,13 +10,15 @@ const theme = extendTheme({
       dimmed: baseTheme.colors.gray[400],
     },
   },
-  fonts: { heading: 'Outfit, "Segoe UI", Roboto, sans-serif' },
+  fonts: {
+    heading: `'Open Sans', sans-serif`,
+    body: `'Open Sans', sans-serif`,
+  },
   styles: {
     global: {
       'html, body': {
         backgroundColor: 'background.primary',
-        color: baseTheme.colors.gray[100],
-        fontFamily: 'Outfit, "Segoe UI", Roboto, sans-serif',
+        color: baseTheme.colors.white,
         fontSize: '14px',
         margin: 0,
         padding: 0,
