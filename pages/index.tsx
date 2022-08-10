@@ -22,15 +22,15 @@ const Home: NextPage = () => {
       </GridItem>
       <GridItem w="100%" padding="0 20px">
         <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6}>
-          <GridItem w="100%" h="10">
+          <GridItem w="100%">
             <H2>Top Layer</H2>
             <VideoStream />
           </GridItem>
-          <GridItem w="100%" h="10">
+          <GridItem w="100%">
             <H2>Measurement Layer</H2>
             <RawSignalsNoSSR />
           </GridItem>
-          <GridItem w="100%" h="10">
+          <GridItem w="100%">
             <H2>Deep Layer</H2>
             <RythmMeasurement />
           </GridItem>
