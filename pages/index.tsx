@@ -1,10 +1,12 @@
 import { Grid, GridItem, Heading } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import Profile from '../components/Profile';
-import RawSignals from '../components/RawSignals';
 import RythmMeasurement from '../components/RythmMeasurement';
 import VideoStream from '../components/VideoStream';
+import dynamic from 'next/dynamic';
 import type { NextPage } from 'next';
+
+const RawSignalsNoSSR = dynamic(() => import('../components/RawSignals'), { ssr: false });
 
 const H2 = ({ children }: { children: ReactNode }) => (
   <Heading as="h2" size="md" fontWeight="normal" noOfLines={1} textAlign="center" py="20px">
@@ -26,7 +28,7 @@ const Home: NextPage = () => {
           </GridItem>
           <GridItem w="100%" h="10">
             <H2>Measurement Layer</H2>
-            <RawSignals />
+            <RawSignalsNoSSR />
           </GridItem>
           <GridItem w="100%" h="10">
             <H2>Deep Layer</H2>

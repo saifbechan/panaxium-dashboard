@@ -13,6 +13,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import StreamingPlugin from 'chartjs-plugin-streaming';
+import zoomPlugin from 'chartjs-plugin-zoom';
 
 ChartJS.register(
   StreamingPlugin,
@@ -22,7 +23,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  zoomPlugin
 );
 
 const RawSignals = () => {
@@ -62,6 +64,23 @@ const RawSignals = () => {
           ],
         }}
         options={{
+          plugins: {
+            zoom: {
+              pan: {
+                enabled: true,
+                mode: 'x',
+              },
+              zoom: {
+                pinch: {
+                  enabled: true,
+                },
+                wheel: {
+                  enabled: true,
+                },
+                mode: 'x',
+              },
+            },
+          },
           scales: {
             x: {
               type: 'realtime',
