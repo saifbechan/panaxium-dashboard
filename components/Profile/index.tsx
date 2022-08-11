@@ -1,17 +1,30 @@
 import { Box, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
 import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
+import { useRecoilState } from 'recoil';
 import Image from 'next/image';
+import profileOpenState from '../../store/profile-open-state';
 import sb from './saif-bechan-teaser-image-rounded-modified.png';
 
 const Profile = () => {
+  const [_, setProfileOpen] = useRecoilState(profileOpenState);
+
   return (
-    <Box backgroundColor="#0C091E" borderRadius="0 15px 15px 0" padding="30px">
+    <Box backgroundColor="#0C091E" borderRadius={{ base: 0, md: '0 15px 15px 0' }} padding="30px">
       <Grid templateColumns="1fr 1fr 8fr 1fr" gap={6}>
         <Icon as={BsThreeDotsVertical} boxSize={6} cursor="pointer" />
         <Icon as={BsGearFill} boxSize={6} cursor="pointer" />
         <Spacer />
-        <Icon as={BsXLg} boxSize={5} cursor="pointer" />
+        <Box
+          justifyContent="center"
+          alignItems="center"
+          display="flex"
+          cursor="pointer"
+          padding="1"
+          onClick={() => setProfileOpen(false)}
+        >
+          <Icon as={BsXLg} boxSize={5} />
+        </Box>
       </Grid>
 
       <VStack color="text.dimmed" spacing={8} padding="30px 0">

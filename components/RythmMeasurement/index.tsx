@@ -12,8 +12,9 @@ import { Box, Tooltip as CTooltip } from '@chakra-ui/react';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
+import StreamingPlugin from 'chartjs-plugin-streaming';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, StreamingPlugin);
 
 export const options = {
   responsive: true,
