@@ -37,7 +37,7 @@ const Profile = () => {
           border="4px solid white"
           position="relative"
         >
-          <Image src={sb} alt="avatar" layout="fill" />
+          <Image src={sb} alt="avatar" layout="fill" priority />
         </Box>
 
         <Heading as="h1" size="xl">
