@@ -13,7 +13,7 @@ import type { NextPage } from 'next';
 
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignals'), { ssr: false });
 
-const GAP = 5;
+const GAP = { base: 2, md: 5 };
 
 const H2 = ({ children }: { children: ReactNode }) => (
   <Heading as="h2" size="md" fontWeight="normal" noOfLines={1} textAlign="center" py="20px">
