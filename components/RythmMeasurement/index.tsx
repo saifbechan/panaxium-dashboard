@@ -8,10 +8,8 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import { Box, Tooltip as CTooltip } from '@chakra-ui/react';
-import { BsQuestionCircle } from 'react-icons/bs';
-import { Icon } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
+import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, StreamingPlugin);
@@ -21,10 +19,6 @@ export const options = {
   plugins: {
     legend: {
       position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Rythm Measurement',
     },
   },
 };
@@ -44,17 +38,9 @@ export const data = {
 
 const RythmMeasurement = () => {
   return (
-    <Box backgroundColor="#29293B" padding="10px">
-      <Box textAlign="right">
-        <CTooltip label="Some extra information" hasArrow>
-          <span>
-            <Icon as={BsQuestionCircle} color="text.dimmed" />
-          </span>
-        </CTooltip>
-      </Box>
-
+    <Section title="Rythm Measurement" info="Some extra information">
       <Bar options={options} data={data} />
-    </Box>
+    </Section>
   );
 };
 

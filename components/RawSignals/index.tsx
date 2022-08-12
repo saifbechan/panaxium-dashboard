@@ -1,6 +1,4 @@
 import 'chartjs-adapter-luxon';
-import { Box, Tooltip as CTooltip, Heading, Icon } from '@chakra-ui/react';
-import { BsQuestionCircle } from 'react-icons/bs';
 import {
   BubbleDataPoint,
   CategoryScale,
@@ -14,7 +12,9 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { faker } from '@faker-js/faker';
 import { useRef } from 'react';
+import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
 import zoomPlugin from 'chartjs-plugin-zoom';
 
@@ -34,19 +34,7 @@ const RawSignals = () => {
   const datasets = useRef<(number | ScatterDataPoint | BubbleDataPoint | null)[][]>([[], []]);
 
   return (
-    <Box backgroundColor="#29293B" padding="10px">
-      <Box textAlign="right">
-        <CTooltip label="Some extra information" hasArrow>
-          <span>
-            <Icon as={BsQuestionCircle} color="text.dimmed" />
-          </span>
-        </CTooltip>
-      </Box>
-
-      <Heading fontWeight="normal" as="h4" size="sm" color="text.dimmed" padding="0 0 20px 0">
-        Raw Signals
-      </Heading>
-
+    <Section title="Raw Signals" info="Some extra information">
       <Line
         data={{
           datasets: [
@@ -55,7 +43,6 @@ const RawSignals = () => {
               backgroundColor: '#61586F',
               borderColor: '#59486A',
               cubicInterpolationMode: 'monotone',
-              fill: true,
               data: datasets.current[0],
             },
             {
@@ -63,13 +50,13 @@ const RawSignals = () => {
               backgroundColor: '#472B5E',
               borderColor: '#401D56',
               cubicInterpolationMode: 'monotone',
-              fill: true,
               data: datasets.current[1],
             },
           ],
         }}
         options={{
           plugins: {
+            legend: { display: false },
             zoom: {
               pan: {
                 enabled: true,
@@ -95,7 +82,7 @@ const RawSignals = () => {
                   chart.data.datasets.forEach((dataset, index) => {
                     dataset.data.push({
                       x: Date.now(),
-                      y: Math.random(),
+                      y: faker.datatype.float({ min: index, max: index + 1 }),
                     });
 
                     datasets.current[index] = dataset.data;
@@ -106,7 +93,7 @@ const RawSignals = () => {
           },
         }}
       />
-    </Box>
+    </Section>
   );
 };
 
