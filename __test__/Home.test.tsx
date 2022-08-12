@@ -1,9 +1,8 @@
+import { RecoilRoot } from 'recoil';
 import { expect, test, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import Home from '../pages';
 import Layout from '../components/Layout';
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { RecoilRoot } from 'recoil';
 
 vi.mock('react-youtube', () => {
   return { default: vi.fn() };
