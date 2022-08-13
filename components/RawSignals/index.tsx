@@ -41,16 +41,18 @@ const RawSignals = () => {
             {
               label: 'Dataset 1',
               backgroundColor: '#61586F',
-              borderColor: '#59486A',
+              borderColor: '#61586F',
               cubicInterpolationMode: 'monotone',
               data: datasets.current[0],
+              pointRadius: 0,
             },
             {
               label: 'Dataset 2',
               backgroundColor: '#472B5E',
-              borderColor: '#401D56',
+              borderColor: '#59486A',
               cubicInterpolationMode: 'monotone',
               data: datasets.current[1],
+              pointRadius: 0,
             },
           ],
         }}
