@@ -52,7 +52,6 @@ const PSDMeasurement = () => {
           datasets: [
             {
               type: 'line',
-              label: 'Dataset 1',
               borderColor: '#61586F',
               borderWidth: 2,
               fill: false,
@@ -62,8 +61,16 @@ const PSDMeasurement = () => {
             },
             {
               type: 'line',
+              borderColor: '#48438C',
+              borderWidth: 2,
+              fill: false,
+              data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+              pointRadius: 0,
+              cubicInterpolationMode: 'monotone',
+            },
+            {
+              type: 'line',
               fill: true,
-              label: 'Dataset 2',
               backgroundColor: '#583170',
               data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
               borderColor: '#683276',
