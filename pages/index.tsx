@@ -55,12 +55,30 @@ const Home: NextPage = () => {
               <PSDMeasurement />
             </Grid>
             <Spacer h={GAP} />
-            <RawSignalsNoSSR sets={[[], []]} signal={0} />
+            <RawSignalsNoSSR
+              data={{
+                backgroundColor: '#61586F',
+                borderColor: '#61586F',
+                cubicInterpolationMode: 'monotone',
+                data: [],
+                pointRadius: 0,
+              }}
+              signal={0}
+            />
           </GridItem>
           <GridItem>
             <H2>Deep Layer</H2>
             <RythmMeasurement />
-            <RawSignalsNoSSR sets={[[], []]} signal={1} />
+            <RawSignalsNoSSR
+              data={{
+                backgroundColor: '#472B5E',
+                borderColor: '#59486A',
+                cubicInterpolationMode: 'monotone',
+                data: [],
+                pointRadius: 0,
+              }}
+              signal={1}
+            />
           </GridItem>
         </Grid>
       </GridItem>
