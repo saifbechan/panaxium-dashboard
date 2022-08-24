@@ -1,4 +1,4 @@
-import { Grid, GridItem, Heading, Spacer } from '@chakra-ui/react';
+import { Collapse, Grid, GridItem, Heading, Spacer } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { useRecoilValue } from 'recoil';
 import Handle from '../components/Profile/handle';
@@ -6,9 +6,11 @@ import ImpedanceMeasurement from '../components/ImpedanceMeasurement';
 import PSDMeasurement from '../components/PSDmeasurement';
 import Profile from '../components/Profile';
 import RythmMeasurement from '../components/RythmMeasurement';
+import SectionToggles from '../components/SectionToggles';
 import VideoStream from '../components/VideoStream';
 import dynamic from 'next/dynamic';
 import profileOpenState from '../store/profile-open-state';
+import sectionTogglesState from '../store/section-toggles-state';
 import type { NextPage } from 'next';
 
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignals'), { ssr: false });
@@ -23,6 +25,7 @@ const H2 = ({ children }: { children: ReactNode }) => (
 
 const Home: NextPage = () => {
   const profileOpen = useRecoilValue(profileOpenState);
+  const sectionToggles = useRecoilValue(sectionTogglesState);
 
   return (
     <Grid
@@ -37,6 +40,9 @@ const Home: NextPage = () => {
         {profileOpen ? <Profile /> : <Handle />}
       </GridItem>
       <GridItem>
+        <GridItem marginTop="60px">
+          <SectionToggles />
+        </GridItem>
         <Grid
           templateColumns={{
             base: '1fr',
@@ -68,7 +74,10 @@ const Home: NextPage = () => {
           </GridItem>
           <GridItem>
             <H2>Deep Layer</H2>
-            <RythmMeasurement />
+            <Collapse in={sectionToggles['rythm-measurement']} animateOpacity>
+              <RythmMeasurement />
+              <Spacer h={GAP} />
+            </Collapse>
             <RawSignalsNoSSR
               data={{
                 backgroundColor: '#472B5E',
