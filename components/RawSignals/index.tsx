@@ -14,8 +14,10 @@ import {
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
+import selectedSignalState from '../../store/selected-signal-state';
 import zoomPlugin from 'chartjs-plugin-zoom';
 
 ChartJS.register(
@@ -30,8 +32,15 @@ ChartJS.register(
   zoomPlugin
 );
 
-const RawSignals = () => {
-  const datasets = useRef<(number | ScatterDataPoint | BubbleDataPoint | null)[][]>([[], []]);
+const RawSignals = ({
+  sets,
+  signal,
+}: {
+  sets: (number | ScatterDataPoint | BubbleDataPoint | null)[][];
+  signal: number;
+}) => {
+  const datasets = useRef<(number | ScatterDataPoint | BubbleDataPoint | null)[][]>(sets);
+  const setSelectedSignal = useSetRecoilState(selectedSignalState);
 
   return (
     <Section title="Raw Signals" info="Some extra information">
@@ -57,6 +66,10 @@ const RawSignals = () => {
           ],
         }}
         options={{
+          events: ['click'],
+          onClick: () => {
+            setSelectedSignal(signal);
+          },
           plugins: {
             legend: { display: false },
             zoom: {

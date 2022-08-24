@@ -55,11 +55,12 @@ const Home: NextPage = () => {
               <PSDMeasurement />
             </Grid>
             <Spacer h={GAP} />
-            <RawSignalsNoSSR />
+            <RawSignalsNoSSR sets={[[], []]} signal={0} />
           </GridItem>
           <GridItem>
             <H2>Deep Layer</H2>
             <RythmMeasurement />
+            <RawSignalsNoSSR sets={[[], []]} signal={1} />
           </GridItem>
         </Grid>
       </GridItem>
