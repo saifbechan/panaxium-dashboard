@@ -1,0 +1,55 @@
+name: main cd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  utest:
+    runs-on: ubuntu-latest
+    name: Unit tests & linting 🧪
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - run: |
+          yarn
+          yarn lint
+          yarn type-check
+          yarn test:ci
+        env:
+          CI: true
+
+  e2etest:
+    runs-on: ubuntu-18.04
+    name: end-2-end testing 🌎
+    steps:
+      - uses: UnlyEd/github-action-await-vercel@v1.2.14
+        id: await-vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: saifbechan-me.vercel.app
+          timeout: 10
+
+      - name: Displays the deployment name (example on how to read information about the deployment)
+        run: 'echo The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}'
+
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: yarn test:e2e
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }}
