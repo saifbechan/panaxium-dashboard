@@ -10,7 +10,6 @@ const config: PlaywrightTestConfig = {
     command: 'yarn start -p 6060',
     port: 6060,
     timeout: 120 * 1000,
-    reuseExistingServer: !process.env.CI,
   },
 
   use: {

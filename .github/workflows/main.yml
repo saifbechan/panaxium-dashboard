@@ -7,58 +7,21 @@ on:
     branches: [main]
 
 jobs:
-  code-quality:
+  tests:
     runs-on: ubuntu-20.04
-    name: Unit tests & linting 🧪
+    name: Unit tests, E2E tests & linting 🧪
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: |
           yarn
           yarn type-check
           yarn lint
           yarn test:ci
+          yarn build
+          npx playwright install --with-deps
+          yarn playwright test
         env:
           CI: true
-
-  preview:
-    runs-on: ubuntu-20.04
-    needs: code-quality
-    name: Deploy to Vercel 🚀
-    outputs:
-      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
-    steps:
-      - name: Waiting for 200 from the Vercel Preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
-        id: waitFor200
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 120
-
-  e2etest:
-    runs-on: ubuntu-20.04
-    needs: preview
-    name: E2E testing 🌎
-    steps:
-      - name: Prepare testing env
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn
-      - run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: yarn playwright test
-        env:
-          CI: true
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.preview.outputs.preview_url }}
