@@ -20,6 +20,7 @@ const theme = extendTheme({
         backgroundColor: 'background.primary',
         color: baseTheme.colors.white,
         fontSize: '14px',
+        height: '100%',
         margin: 0,
         padding: 0,
       },
@@ -37,6 +38,9 @@ const theme = extendTheme({
       '::-webkit-scrollbar-thumb': {
         backgroundColor: baseTheme.colors.gray[700],
         borderRadius: '30px',
+      },
+      '#__next': {
+        height: '100%',
       },
     },
   },

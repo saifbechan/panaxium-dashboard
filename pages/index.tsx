@@ -38,7 +38,7 @@ const Home: NextPage = () => {
           gap={GAP}
           templateColumns={{
             base: '1fr',
-            md: 'repeat(3, minmax(0, 1fr))',
+            md: 'repeat(2, minmax(0, 1fr))',
           }}
         >
           <RythmMeasurement on={sectionToggles['rythm-measurement']} />
