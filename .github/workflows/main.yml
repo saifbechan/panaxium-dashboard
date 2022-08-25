@@ -7,49 +7,61 @@ on:
     branches: [main]
 
 jobs:
-  utest:
-    runs-on: ubuntu-latest
+  code-quality:
+    runs-on: ubuntu-20.04
     name: Unit tests & linting 🧪
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: |
           yarn
-          yarn lint
           yarn type-check
+          yarn lint
           yarn test:ci
         env:
           CI: true
 
-  e2etest:
-    runs-on: ubuntu-18.04
-    name: end-2-end testing 🌎
+  preview:
+    runs-on: ubuntu-20.04
+    needs: code-quality
+    name: Deploy to Vercel 🚀
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
-      - uses: UnlyEd/github-action-await-vercel@v1.2.14
-        id: await-vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Waiting for 200 from the Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: waitFor200
         with:
-          deployment-url: saifbechan-me.vercel.app
-          timeout: 10
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 120
 
-      - name: Displays the deployment name (example on how to read information about the deployment)
-        run: 'echo The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}'
-
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+  e2etest:
+    runs-on: ubuntu-20.04
+    needs: preview
+    name: E2E testing 🌎
+    steps:
+      - name: Prepare testing env
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
-        run: yarn
-      - name: Install Playwright
-        run: npx playwright install --with-deps
+      - run: yarn
+      - run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: yarn test:e2e
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.preview.outputs.preview_url }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_SPACE_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_SPACE_ACCESS_TOKEN }}
+          CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN }}
+          CONTENTFUL_ENVIRONMENT: ${{ secrets.CONTENTFUL_ENVIRONMENT }}
