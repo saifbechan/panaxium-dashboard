@@ -11,10 +11,11 @@ import { faker } from '@faker-js/faker';
 import { selectedSignalState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
+import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 import React from 'react';
 import Section from '../Section';
 
-ChartJS.register(LinearScale, PointElement, BubbleController, Tooltip, Legend);
+ChartJS.register(LinearScale, PointElement, BubbleController, Tooltip, Legend, ChartDataLabels);
 
 const ImpedanceMeasurement = () => {
   const chartRef = useRef<ChartJS>(null);
@@ -42,6 +43,7 @@ const ImpedanceMeasurement = () => {
                 },
               ],
               backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
+              label: `${index}`,
             })),
           }}
           options={{
@@ -57,6 +59,13 @@ const ImpedanceMeasurement = () => {
             },
             plugins: {
               legend: { display: false },
+              datalabels: {
+                color: '#FFF',
+                font: {
+                  weight: 'bold',
+                },
+                formatter: (_, context: Context) => context.dataset.label,
+              },
             },
           }}
           type="bubble"

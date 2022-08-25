@@ -21,6 +21,7 @@ export const options = {
     legend: {
       position: 'top' as const,
     },
+    datalabels: { display: false },
   },
 };
 

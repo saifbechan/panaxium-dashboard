@@ -33,7 +33,7 @@ ChartJS.register(
   zoomPlugin
 );
 
-const RawSignals = ({
+const RawSignal = ({
   datasets,
   signal,
 }: {
@@ -47,7 +47,7 @@ const RawSignals = ({
     <Section
       border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
       info="Some extra information"
-      title="Raw Signals"
+      title={`Raw Signal ${signal}`}
     >
       {useMemo(
         () => (
@@ -63,6 +63,7 @@ const RawSignals = ({
               },
               plugins: {
                 legend: { display: false },
+                datalabels: { display: false },
                 zoom: {
                   pan: {
                     enabled: true,
@@ -107,4 +108,4 @@ const RawSignals = ({
   );
 };
 
-export default RawSignals;
+export default RawSignal;

@@ -74,6 +74,7 @@ const PSDMeasurement = () => {
             maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
+              datalabels: { display: false },
             },
             scales: {
               y: {

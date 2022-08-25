@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import rawSignals from '../lib/raw-signals';
 import type { NextPage } from 'next';
 
-const RawSignalsNoSSR = dynamic(() => import('../components/RawSignals'), { ssr: false });
+const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: false });
 
 const Home: NextPage = () => {
   const profileOpen = useAtomValue(profileOpenState);
