@@ -2,11 +2,14 @@ import { GAP } from '../lib/constants';
 import { Grid, GridItem, Spacer } from '@chakra-ui/react';
 import { useRecoilValue } from 'recoil';
 import Handle from '../components/Profile/handle';
+import ImpedanceMeasurement from '../components/ImpedanceMeasurement';
+import PSDMeasurement from '../components/PSDmeasurement';
 import Profile from '../components/Profile';
 import RythmMeasurement from '../components/RythmMeasurement';
 import SectionToggles from '../components/SectionToggles';
 import dynamic from 'next/dynamic';
 import profileOpenState from '../store/profile-open-state';
+import rawSignals from '../lib/raw-signals';
 import sectionTogglesState from '../store/section-toggles-state';
 import type { NextPage } from 'next';
 
@@ -41,6 +44,14 @@ const Home: NextPage = () => {
           gap={GAP}
         >
           <RythmMeasurement on={sectionToggles['rythm-measurement']} />
+          <Grid templateColumns="repeat(2, minmax(0, 1fr))" gap={GAP}>
+            <ImpedanceMeasurement />
+            <PSDMeasurement />
+          </Grid>
+
+          {rawSignals.map((datasets, signal) => (
+            <RawSignalsNoSSR datasets={[datasets]} signal={signal} key={signal} />
+          ))}
         </Grid>
       </GridItem>
     </Grid>
