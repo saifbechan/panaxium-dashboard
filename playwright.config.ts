@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   retries: 2,
   outputDir: 'test-results/',
   webServer: {
-    command: 'npm run dev',
+    command: 'yarn build && yarn start',
     port: 3000,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
