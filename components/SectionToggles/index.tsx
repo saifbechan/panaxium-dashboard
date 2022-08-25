@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel, Switch } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup } from '@chakra-ui/react';
 import { sectionTogglesState } from '../../lib/store';
 import { useAtom } from 'jotai';
 
@@ -7,22 +7,21 @@ const SectionToggles = () => {
 
   return (
     <Box backgroundColor="#29293B" padding="10px">
-      <FormControl alignItems="center" display="flex">
-        <FormLabel htmlFor="rythm-measurement" mb="0">
-          Rythm Measurement
-        </FormLabel>
-        <Switch
-          id="rythm-measurement"
-          isChecked={sectionToggles['rythm-measurement']}
+      <ButtonGroup gap="4">
+        <Button
+          colorScheme="purple"
           size="sm"
-          onChange={() =>
+          variant={sectionToggles['rythm-measurement'] ? 'solid' : 'outline'}
+          onClick={() =>
             setSectionToggles({
               ...sectionToggles,
               'rythm-measurement': !sectionToggles['rythm-measurement'],
             })
           }
-        />
-      </FormControl>
+        >
+          Rythm Measurement
+        </Button>
+      </ButtonGroup>
     </Box>
   );
 };
