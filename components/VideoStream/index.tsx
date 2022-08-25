@@ -4,9 +4,9 @@ import YouTube from 'react-youtube';
 
 const VideoStream = () => {
   return (
-    <Section title="Video Stream" info="Some extra information" boxed={false}>
-      <Box overflow="hidden" borderRadius="10px">
-        <YouTube videoId="avl7lbkdQKA" opts={{ width: '100%' }} />
+    <Section boxed={false} info="Some extra information" title="Video Stream">
+      <Box borderRadius="10px" overflow="hidden">
+        <YouTube opts={{ width: '100%' }} videoId="avl7lbkdQKA" />
       </Box>
     </Section>
   );

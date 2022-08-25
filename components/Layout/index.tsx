@@ -7,8 +7,8 @@ const Layout = ({ children }: { children: ReactNode }) => (
   <>
     <main>{children}</main>
     <footer>
-      <Box textAlign="right" padding="20px" right="0" bottom="0" position="fixed">
-        <Image src={logo} alt="panaxium-logo" width="100" height="12" />
+      <Box bottom="0" padding="20px" position="fixed" right="0" textAlign="right">
+        <Image alt="panaxium-logo" height="12" src={logo} width="100" />
       </Box>
     </footer>
   </>

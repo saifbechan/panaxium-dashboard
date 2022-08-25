@@ -39,9 +39,9 @@ export const data = {
 
 const RythmMeasurement = ({ on }: { on: boolean }) => {
   return (
-    <Collapse in={on} animateOpacity>
-      <Section title="Rythm Measurement" info="Some extra information">
-        <Bar options={options} data={data} />
+    <Collapse animateOpacity in={on}>
+      <Section info="Some extra information" title="Rythm Measurement">
+        <Bar data={data} options={options} />
       </Section>
     </Collapse>
   );

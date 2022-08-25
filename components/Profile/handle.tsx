@@ -9,10 +9,10 @@ const Handle = () => {
   return (
     <Box backgroundColor="#0C091E" borderRadius={{ base: 0, md: '0 15px 15px 0' }} padding="20px">
       <Box
-        justifyContent="center"
         alignItems="center"
-        display="flex"
         cursor="pointer"
+        display="flex"
+        justifyContent="center"
         padding="1"
         onClick={() => setProfileOpen(true)}
       >

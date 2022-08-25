@@ -29,6 +29,7 @@
       {
         "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
       }
-    ]
+    ],
+    "react/jsx-sort-props": [2, { "callbacksLast": true, "reservedFirst": true }]
   }
 }

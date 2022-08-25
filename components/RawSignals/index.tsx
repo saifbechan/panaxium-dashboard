@@ -45,10 +45,9 @@ const RawSignals = ({
 
   return useMemo(
     () => (
-      <Section title="Raw Signals" info="Some extra information">
+      <Section info="Some extra information" title="Raw Signals">
         <Chart
           ref={chartRef}
-          type="line"
           data={{
             datasets,
           }}
@@ -93,6 +92,7 @@ const RawSignals = ({
               },
             },
           }}
+          type="line"
         />
       </Section>
     ),

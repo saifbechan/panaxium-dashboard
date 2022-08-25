@@ -21,14 +21,14 @@ const Section = ({
     <GridItem>
       <Box backgroundColor="#29293B" padding="10px">
         <Box textAlign="right">
-          <Tooltip label={info} hasArrow>
+          <Tooltip hasArrow label={info}>
             <span>
               <Icon as={BsQuestionCircle} color="text.dimmed" />
             </span>
           </Tooltip>
         </Box>
 
-        <Heading fontWeight="normal" as="h4" size="sm" color="text.dimmed" padding="0 0 20px 0">
+        <Heading as="h4" color="text.dimmed" fontWeight="normal" padding="0 0 20px 0" size="sm">
           {title}
         </Heading>
 

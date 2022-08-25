@@ -34,24 +34,9 @@ const PSDMeasurement = () => {
 
   return useMemo(
     () => (
-      <Section title="PSD measurement" info="Some extra information">
+      <Section info="Some extra information" title="PSD measurement">
         <Chart
           ref={chartRef}
-          type="bar"
-          options={{
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-            },
-            scales: {
-              y: {
-                display: false,
-              },
-              x: {
-                display: false,
-              },
-            },
-          }}
           data={{
             labels,
             datasets: [
@@ -85,6 +70,21 @@ const PSDMeasurement = () => {
               },
             ],
           }}
+          options={{
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              y: {
+                display: false,
+              },
+              x: {
+                display: false,
+              },
+            },
+          }}
+          type="bar"
         />
       </Section>
     ),

@@ -21,12 +21,12 @@ const Home: NextPage = () => {
 
   return (
     <Grid
+      gap={GAP}
+      padding={{ base: 0, md: '0 6 0 0' }}
       templateColumns={{
         base: '1fr',
         md: profileOpen ? '300px auto' : '75px auto',
       }}
-      gap={GAP}
-      padding={{ base: 0, md: '0 6 0 0' }}
     >
       <GridItem marginTop="60px" transition="all 1s">
         {profileOpen ? <Profile /> : <Handle />}
@@ -37,20 +37,20 @@ const Home: NextPage = () => {
           <Spacer h={GAP} />
         </GridItem>
         <Grid
+          gap={GAP}
           templateColumns={{
             base: '1fr',
             md: 'repeat(3, minmax(0, 1fr))',
           }}
-          gap={GAP}
         >
           <RythmMeasurement on={sectionToggles['rythm-measurement']} />
-          <Grid templateColumns="repeat(2, minmax(0, 1fr))" gap={GAP}>
+          <Grid gap={GAP} templateColumns="repeat(2, minmax(0, 1fr))">
             <ImpedanceMeasurement />
             <PSDMeasurement />
           </Grid>
 
           {rawSignals.map((datasets, signal) => (
-            <RawSignalsNoSSR datasets={[datasets]} signal={signal} key={signal} />
+            <RawSignalsNoSSR key={signal} datasets={[datasets]} signal={signal} />
           ))}
         </Grid>
       </GridItem>

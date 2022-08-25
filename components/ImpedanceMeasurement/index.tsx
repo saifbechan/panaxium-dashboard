@@ -29,10 +29,21 @@ const ImpedanceMeasurement = () => {
 
   return useMemo(
     () => (
-      <Section title="Impedance measurement" info="Some extra information">
+      <Section info="Some extra information" title="Impedance measurement">
         <Chart
-          type="bubble"
           ref={chartRef}
+          data={{
+            datasets: Array.from({ length: 16 }, (_, index) => ({
+              data: [
+                {
+                  x: faker.datatype.number({ min: 0, max: 10 }),
+                  y: faker.datatype.number({ min: 0, max: 10 }),
+                  r: faker.datatype.number({ min: 5, max: 20 }),
+                },
+              ],
+              backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
+            })),
+          }}
           options={{
             maintainAspectRatio: false,
             scales: {
@@ -48,18 +59,7 @@ const ImpedanceMeasurement = () => {
               legend: { display: false },
             },
           }}
-          data={{
-            datasets: Array.from({ length: 16 }, (_, index) => ({
-              data: [
-                {
-                  x: faker.datatype.number({ min: 0, max: 10 }),
-                  y: faker.datatype.number({ min: 0, max: 10 }),
-                  r: faker.datatype.number({ min: 5, max: 20 }),
-                },
-              ],
-              backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
-            })),
-          }}
+          type="bubble"
         />
       </Section>
     ),

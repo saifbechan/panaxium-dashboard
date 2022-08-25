@@ -7,14 +7,14 @@ const SectionToggles = () => {
 
   return (
     <Box backgroundColor="#29293B" padding="10px">
-      <FormControl display="flex" alignItems="center">
+      <FormControl alignItems="center" display="flex">
         <FormLabel htmlFor="rythm-measurement" mb="0">
           Rythm Measurement
         </FormLabel>
         <Switch
           id="rythm-measurement"
-          size="sm"
           isChecked={sectionToggles['rythm-measurement']}
+          size="sm"
           onChange={() =>
             setSectionToggles({
               ...sectionToggles,

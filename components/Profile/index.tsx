@@ -11,15 +11,15 @@ const Profile = () => {
 
   return (
     <Box backgroundColor="#0C091E" borderRadius={{ base: 0, md: '0 15px 15px 0' }} padding="30px">
-      <Grid templateColumns="1fr 1fr 8fr 1fr" gap={6}>
+      <Grid gap={6} templateColumns="1fr 1fr 8fr 1fr">
         <Icon as={BsThreeDotsVertical} boxSize={6} cursor="pointer" />
         <Icon as={BsGearFill} boxSize={6} cursor="pointer" />
         <Spacer />
         <Box
-          justifyContent="center"
           alignItems="center"
-          display="flex"
           cursor="pointer"
+          display="flex"
+          justifyContent="center"
           padding="1"
           onClick={() => setProfileOpen(false)}
         >
@@ -27,17 +27,17 @@ const Profile = () => {
         </Box>
       </Grid>
 
-      <VStack color="text.dimmed" spacing={8} padding="30px 0">
+      <VStack color="text.dimmed" padding="30px 0" spacing={8}>
         <Text fontSize="lg">DATE: November 5, 2019</Text>
 
         <Box
-          boxSize="40"
           backgroundColor="white"
-          borderRadius="50%"
           border="4px solid white"
+          borderRadius="50%"
+          boxSize="40"
           position="relative"
         >
-          <Image src={sb} alt="avatar" layout="fill" priority />
+          <Image alt="avatar" layout="fill" priority src={sb} />
         </Box>
 
         <Heading as="h1" size="xl">
@@ -50,7 +50,7 @@ const Profile = () => {
       <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
         Information about the patient:
       </Text>
-      <VStack spacing={2} align="stretch">
+      <VStack align="stretch" spacing={2}>
         <Box>
           <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
             Weight
