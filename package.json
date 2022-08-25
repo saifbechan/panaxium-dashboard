@@ -36,6 +36,8 @@
     "sharp": "^0.30.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@fontsource/open-sans": "^4.5.11",
     "@fontsource/raleway": "^4.5.10",
     "@playwright/test": "^1.26.0-alpha-aug-25-2022",
