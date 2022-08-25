@@ -1,5 +1,12 @@
+import {
+  BubbleController,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  PointElement,
+  Tooltip,
+} from 'chart.js';
 import { Chart } from 'react-chartjs-2';
-import { Chart as ChartJS, Legend, LinearScale, PointElement, Tooltip } from 'chart.js';
 import { faker } from '@faker-js/faker';
 import { useEffect, useMemo, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -7,7 +14,7 @@ import React from 'react';
 import Section from '../Section';
 import selectedSignalState from '../../store/selected-signal-state';
 
-ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
+ChartJS.register(LinearScale, PointElement, BubbleController, Tooltip, Legend);
 
 const ImpedanceMeasurement = () => {
   const chartRef = useRef<ChartJS>(null);
