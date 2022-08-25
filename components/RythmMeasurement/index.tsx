@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
+import { Collapse } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
@@ -36,11 +37,13 @@ export const data = {
   ],
 };
 
-const RythmMeasurement = () => {
+const RythmMeasurement = ({ on }: { on: boolean }) => {
   return (
-    <Section title="Rythm Measurement" info="Some extra information">
-      <Bar options={options} data={data} />
-    </Section>
+    <Collapse in={on} animateOpacity>
+      <Section title="Rythm Measurement" info="Some extra information">
+        <Bar options={options} data={data} />
+      </Section>
+    </Collapse>
   );
 };
 

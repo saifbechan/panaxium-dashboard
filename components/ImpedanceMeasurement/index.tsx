@@ -15,8 +15,7 @@ const ImpedanceMeasurement = () => {
 
   useEffect(() => {
     chartRef.current?.data.datasets.forEach((dataset, index) => {
-      dataset.backgroundColor =
-        index === selectedSignal ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)';
+      dataset.backgroundColor = index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)';
     });
     chartRef.current?.update();
   }, [selectedSignal]);
@@ -51,8 +50,7 @@ const ImpedanceMeasurement = () => {
                   r: faker.datatype.number({ min: 5, max: 20 }),
                 },
               ],
-              backgroundColor:
-                index === selectedSignal ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)',
+              backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
             })),
           }}
         />
