@@ -1,4 +1,3 @@
-import { RecoilRoot } from 'recoil';
 import { expect, test, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import Home from '../pages';
@@ -10,11 +9,9 @@ vi.mock('react-youtube', () => {
 
 test('Home', () => {
   render(
-    <RecoilRoot>
-      <Layout>
-        <Home />
-      </Layout>
-    </RecoilRoot>
+    <Layout>
+      <Home />
+    </Layout>
   );
   const main = within(screen.getByRole('main'));
   expect(main.getByRole('heading', { level: 1, name: /Saif Bechan/i })).toBeDefined();

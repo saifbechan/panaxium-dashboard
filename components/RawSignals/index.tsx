@@ -14,11 +14,11 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import { selectedSignalState } from '../../lib/store';
 import { useMemo, useRef } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
-import selectedSignalState from '../../store/selected-signal-state';
 import zoomPlugin from 'chartjs-plugin-zoom';
 
 ChartJS.register(
@@ -41,7 +41,7 @@ const RawSignals = ({
   signal: number;
 }) => {
   const chartRef = useRef<ChartJS>(null);
-  const setSelectedSignal = useSetRecoilState(selectedSignalState);
+  const setSelectedSignal = useSetAtom(selectedSignalState);
 
   return useMemo(
     () => (

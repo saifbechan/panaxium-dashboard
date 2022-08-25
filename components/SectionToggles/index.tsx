@@ -1,9 +1,9 @@
 import { Box, FormControl, FormLabel, Switch } from '@chakra-ui/react';
-import { useRecoilState } from 'recoil';
-import sectionTogglesState from '../../store/section-toggles-state';
+import { sectionTogglesState } from '../../lib/store';
+import { useAtom } from 'jotai';
 
 const SectionToggles = () => {
-  const [sectionToggles, setSectionToggles] = useRecoilState(sectionTogglesState);
+  const [sectionToggles, setSectionToggles] = useAtom(sectionTogglesState);
 
   return (
     <Box backgroundColor="#29293B" padding="10px">

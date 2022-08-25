@@ -1,13 +1,13 @@
 import { Box, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
 import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
-import { useRecoilState } from 'recoil';
+import { profileOpenState } from '../../lib/store';
+import { useSetAtom } from 'jotai';
 import Image from 'next/image';
-import profileOpenState from '../../store/profile-open-state';
 import sb from './saif-bechan-teaser-image-rounded-modified.png';
 
 const Profile = () => {
-  const [_, setProfileOpen] = useRecoilState(profileOpenState);
+  const setProfileOpen = useSetAtom(profileOpenState);
 
   return (
     <Box backgroundColor="#0C091E" borderRadius={{ base: 0, md: '0 15px 15px 0' }} padding="30px">

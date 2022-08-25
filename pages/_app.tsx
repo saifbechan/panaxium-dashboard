@@ -2,7 +2,6 @@ import '@fontsource/open-sans/400.css';
 import '@fontsource/open-sans/700.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { RecoilRoot } from 'recoil';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import theme from '../styles/theme';
@@ -19,11 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="/manifest.json" rel="manifest" />
       </Head>
       <ChakraProvider theme={theme}>
-        <RecoilRoot>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </RecoilRoot>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ChakraProvider>
     </>
   );

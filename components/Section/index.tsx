@@ -1,8 +1,8 @@
 import { Box, GridItem, Heading, Icon, Tooltip } from '@chakra-ui/react';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { ReactNode } from 'react';
-import { useRecoilValue } from 'recoil';
-import profileOpenState from '../../store/profile-open-state';
+import { profileOpenState } from '../../lib/store';
+import { useAtomValue } from 'jotai';
 
 const Section = ({
   title,
@@ -15,7 +15,7 @@ const Section = ({
   boxed?: boolean;
   children: ReactNode;
 }) => {
-  const profileOpen = useRecoilValue(profileOpenState);
+  const profileOpen = useAtomValue(profileOpenState);
 
   return (
     <GridItem>

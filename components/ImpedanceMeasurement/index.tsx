@@ -8,17 +8,17 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import { selectedSignalState } from '../../lib/store';
+import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
-import { useRecoilValue } from 'recoil';
 import React from 'react';
 import Section from '../Section';
-import selectedSignalState from '../../store/selected-signal-state';
 
 ChartJS.register(LinearScale, PointElement, BubbleController, Tooltip, Legend);
 
 const ImpedanceMeasurement = () => {
   const chartRef = useRef<ChartJS>(null);
-  const selectedSignal = useRecoilValue(selectedSignalState);
+  const selectedSignal = useAtomValue(selectedSignalState);
 
   useEffect(() => {
     chartRef.current?.data.datasets.forEach((dataset, index) => {
