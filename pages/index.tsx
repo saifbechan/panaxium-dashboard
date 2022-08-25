@@ -9,6 +9,7 @@ import RythmMeasurement from '../components/RythmMeasurement';
 import SectionToggles from '../components/SectionToggles';
 import dynamic from 'next/dynamic';
 import profileOpenState from '../store/profile-open-state';
+import rawSignals from '../lib/raw-signals';
 import sectionTogglesState from '../store/section-toggles-state';
 import type { NextPage } from 'next';
 
@@ -43,37 +44,14 @@ const Home: NextPage = () => {
           gap={GAP}
         >
           <RythmMeasurement on={sectionToggles['rythm-measurement']} />
-
           <Grid templateColumns="repeat(2, minmax(0, 1fr))" gap={GAP}>
             <ImpedanceMeasurement />
             <PSDMeasurement />
           </Grid>
 
-          <RawSignalsNoSSR
-            datasets={[
-              {
-                backgroundColor: '#61586F',
-                borderColor: '#61586F',
-                cubicInterpolationMode: 'monotone',
-                data: [],
-                pointRadius: 0,
-              },
-            ]}
-            signal={0}
-          />
-
-          <RawSignalsNoSSR
-            datasets={[
-              {
-                backgroundColor: '#472B5E',
-                borderColor: '#59486A',
-                cubicInterpolationMode: 'monotone',
-                data: [],
-                pointRadius: 0,
-              },
-            ]}
-            signal={1}
-          />
+          {rawSignals.map((datasets, signal) => (
+            <RawSignalsNoSSR datasets={[datasets]} signal={signal} key={signal} />
+          ))}
         </Grid>
       </GridItem>
     </Grid>
