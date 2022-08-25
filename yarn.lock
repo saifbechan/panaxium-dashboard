@@ -2100,13 +2100,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@playwright/test@^1.25.1":
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.25.1.tgz#9847234b6f2b0cca71962b338da7db366a1e9720"
-  integrity sha512-IJ4X0yOakXtwkhbnNzKkaIgXe6df7u3H3FnuhI9Jqh+CdO0e/lYQlDLYiyI9cnXK8E7UAppAWP+VqAv6VX7HQg==
+"@playwright/test@^1.26.0-alpha-aug-25-2022":
+  version "1.26.0-alpha-aug-25-2022"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.26.0-alpha-aug-25-2022.tgz#26079092f34eb3ea12f6ffb93f4739829cbe6c33"
+  integrity sha512-+wGwvK0BOPuPHuEktATomVD6OxHuF8ieJzBTokIceIgiSMruWtqlLjFGO+Ls6O7nP4XQtZlaL2WwuFpARQ0u9Q==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.25.1"
+    playwright-core "1.26.0-alpha-aug-25-2022"
 
 "@popperjs/core@^2.9.3":
   version "2.11.5"
@@ -5315,10 +5315,10 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
-playwright-core@1.25.1:
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.25.1.tgz#abe56aec8bef645fba988320d9f9328fafab0446"
-  integrity sha512-lSvPCmA2n7LawD2Hw7gSCLScZ+vYRkhU8xH0AapMyzwN+ojoDqhkH/KIEUxwNu2PjPoE/fcE0wLAksdOhJ2O5g==
+playwright-core@1.26.0-alpha-aug-25-2022:
+  version "1.26.0-alpha-aug-25-2022"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.26.0-alpha-aug-25-2022.tgz#15950f7518b2000e959031b5a5c1ee174b3c45fd"
+  integrity sha512-3G8e7l5m/PqqaRXqlOpKQRVKXJYBlkDMJyYeWdPjjLKWu7bQy5GHCJ2cxQN8lc197XLR6FckaYIzINtGrfu3oA==
 
 popmotion@11.0.5:
   version "11.0.5"

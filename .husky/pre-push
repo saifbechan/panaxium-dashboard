@@ -4,4 +4,5 @@
 yarn type-check
 yarn lint
 yarn test:ci
-yarn test:e2e
+yarn build
+yarn playwright test

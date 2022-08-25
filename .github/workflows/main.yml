@@ -58,7 +58,7 @@ jobs:
       - run: yarn
       - run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn test:e2e
+        run: yarn playwright test
         env:
           CI: true
           PLAYWRIGHT_TEST_BASE_URL: ${{ needs.preview.outputs.preview_url }}

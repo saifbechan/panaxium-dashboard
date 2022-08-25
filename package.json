@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
@@ -12,7 +12,6 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -39,7 +38,7 @@
   "devDependencies": {
     "@fontsource/open-sans": "^4.5.11",
     "@fontsource/raleway": "^4.5.10",
-    "@playwright/test": "^1.25.1",
+    "@playwright/test": "^1.26.0-alpha-aug-25-2022",
     "@testing-library/react": "^13.3.0",
     "@types/node": "18.7.13",
     "@types/react": "18.0.17",
