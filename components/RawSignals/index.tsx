@@ -15,8 +15,8 @@ import {
 import { Chart } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { selectedSignalState } from '../../lib/store';
+import { useAtom } from 'jotai';
 import { useMemo, useRef } from 'react';
-import { useSetAtom } from 'jotai';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
 import zoomPlugin from 'chartjs-plugin-zoom';
@@ -41,63 +41,69 @@ const RawSignals = ({
   signal: number;
 }) => {
   const chartRef = useRef<ChartJS>(null);
-  const setSelectedSignal = useSetAtom(selectedSignalState);
+  const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
-  return useMemo(
-    () => (
-      <Section info="Some extra information" title="Raw Signals">
-        <Chart
-          ref={chartRef}
-          data={{
-            datasets,
-          }}
-          options={{
-            events: ['click'],
-            onClick: () => {
-              setSelectedSignal(signal);
-            },
-            plugins: {
-              legend: { display: false },
-              zoom: {
-                pan: {
-                  enabled: true,
-                  mode: 'x',
-                },
+  return (
+    <Section
+      border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
+      info="Some extra information"
+      title="Raw Signals"
+    >
+      {useMemo(
+        () => (
+          <Chart
+            ref={chartRef}
+            data={{
+              datasets,
+            }}
+            options={{
+              events: ['click'],
+              onClick: () => {
+                setSelectedSignal(signal);
+              },
+              plugins: {
+                legend: { display: false },
                 zoom: {
-                  pinch: {
+                  pan: {
                     enabled: true,
+                    mode: 'x',
                   },
-                  wheel: {
-                    enabled: true,
-                  },
-                  mode: 'x',
-                },
-              },
-            },
-            scales: {
-              x: {
-                type: 'realtime',
-                realtime: {
-                  delay: 2000,
-                  onRefresh: (chart: ChartJS) => {
-                    chart.data.datasets.forEach((dataset, index) => {
-                      const next = {
-                        x: Date.now(),
-                        y: faker.datatype.float({ min: index, max: index + 1 }),
-                      };
-                      dataset.data.push(next);
-                    });
+                  zoom: {
+                    pinch: {
+                      enabled: true,
+                    },
+                    wheel: {
+                      enabled: true,
+                    },
+                    mode: 'x',
                   },
                 },
               },
-            },
-          }}
-          type="line"
-        />
-      </Section>
-    ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+              scales: {
+                x: {
+                  type: 'realtime',
+                  realtime: {
+                    delay: 2000,
+                    onRefresh: (chart: ChartJS) => {
+                      chart.data.datasets.forEach((dataset, index) => {
+                        const next = {
+                          x: Date.now(),
+                          y: faker.datatype.float({ min: index, max: index + 1 }),
+                        };
+                        dataset.data.push(next);
+                      });
+                    },
+                  },
+                },
+              },
+            }}
+            type="line"
+          />
+        ),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
+      )}
+    </Section>
   );
 };
 
