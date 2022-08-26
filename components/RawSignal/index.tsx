@@ -47,7 +47,7 @@ const RawSignal = ({
     <Section
       border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
       info="Some extra information"
-      title={`Raw Signal ${signal}`}
+      title={`Raw Signal ${signal + 1}`}
     >
       {useMemo(
         () => (

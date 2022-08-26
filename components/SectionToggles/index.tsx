@@ -1,40 +1,38 @@
-import { Box, Button, ButtonGroup } from '@chakra-ui/react';
-import { sectionTogglesState } from '../../lib/store';
+import { Box, FormControl, FormLabel, Switch } from '@chakra-ui/react';
+import { SectionTogglesStateType, sectionTogglesState } from '../../lib/store';
 import { useAtom } from 'jotai';
 
-const SectionToggles = () => {
+const Toggle = ({ id, label }: { id: keyof SectionTogglesStateType; label: string }) => {
   const [sectionToggles, setSectionToggles] = useAtom(sectionTogglesState);
 
   return (
+    <>
+      <FormLabel fontSize="sm" htmlFor={id} mb="0">
+        {label}
+      </FormLabel>
+      <Switch
+        colorScheme="purple"
+        id={id}
+        mr={8}
+        size="sm"
+        onChange={() =>
+          setSectionToggles({
+            ...sectionToggles,
+            [id]: !sectionToggles[id],
+          })
+        }
+      />
+    </>
+  );
+};
+
+const SectionToggles = () => {
+  return (
     <Box backgroundColor="#29293B" padding="10px">
-      <ButtonGroup gap="4">
-        <Button
-          colorScheme="purple"
-          size="sm"
-          variant={sectionToggles['rythm-measurement'] ? 'solid' : 'outline'}
-          onClick={() =>
-            setSectionToggles({
-              ...sectionToggles,
-              'rythm-measurement': !sectionToggles['rythm-measurement'],
-            })
-          }
-        >
-          Rythm Measurement
-        </Button>
-        <Button
-          colorScheme="purple"
-          size="sm"
-          variant={sectionToggles['psd-measurement'] ? 'solid' : 'outline'}
-          onClick={() =>
-            setSectionToggles({
-              ...sectionToggles,
-              'psd-measurement': !sectionToggles['psd-measurement'],
-            })
-          }
-        >
-          PSD measurement
-        </Button>
-      </ButtonGroup>
+      <FormControl alignItems="center" display="flex">
+        <Toggle id="rythm-measurement" label="Rythm Measurement" />
+        <Toggle id="psd-measurement" label="PSD measurement" />
+      </FormControl>
     </Box>
   );
 };
