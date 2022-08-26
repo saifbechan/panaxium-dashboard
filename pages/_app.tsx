@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
         />
         <link href="/manifest.json" rel="manifest" />
+        <title>Panaxium EEG Dashboard</title>
       </Head>
       <ChakraProvider theme={theme}>
         <Layout>

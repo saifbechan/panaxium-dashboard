@@ -22,7 +22,7 @@ const theme = extendTheme({
         fontSize: '14px',
         height: '100%',
         margin: 0,
-        padding: 0,
+        padding: '10px 0 0 0',
       },
       a: {
         textDecoration: 'none',

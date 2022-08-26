@@ -25,11 +25,9 @@ const Home: NextPage = () => {
         md: profileOpen ? '300px auto' : '75px auto',
       }}
     >
-      <GridItem marginTop="60px" transition="all 1s">
-        {profileOpen ? <Profile /> : <Handle />}
-      </GridItem>
+      <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>
       <GridItem marginRight={{ base: 0, md: 6 }}>
-        <GridItem marginTop="60px">
+        <GridItem>
           <SectionToggles />
           <Spacer h={GAP} />
         </GridItem>
