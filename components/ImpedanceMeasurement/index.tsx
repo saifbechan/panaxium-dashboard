@@ -28,52 +28,54 @@ const ImpedanceMeasurement = () => {
     chartRef.current?.update();
   }, [selectedSignal]);
 
-  return useMemo(
-    () => (
-      <Section info="Some extra information" title="Impedance measurement">
-        <Chart
-          ref={chartRef}
-          data={{
-            datasets: Array.from({ length: 16 }, (_, index) => ({
-              data: [
-                {
-                  x: faker.datatype.number({ min: 0, max: 10 }),
-                  y: faker.datatype.number({ min: 0, max: 10 }),
-                  r: faker.datatype.number({ min: 5, max: 20 }),
+  return (
+    <Section info="Some extra information" title="Impedance measurement">
+      {useMemo(
+        () => (
+          <Chart
+            ref={chartRef}
+            data={{
+              datasets: Array.from({ length: 16 }, (_, index) => ({
+                data: [
+                  {
+                    x: faker.datatype.number({ min: 0, max: 10 }),
+                    y: faker.datatype.number({ min: 0, max: 10 }),
+                    r: faker.datatype.number({ min: 5, max: 20 }),
+                  },
+                ],
+                backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
+                label: `${index}`,
+              })),
+            }}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  display: false,
                 },
-              ],
-              backgroundColor: index === selectedSignal ? '#59486A' : 'rgba(255, 255, 255, 0.5)',
-              label: `${index}`,
-            })),
-          }}
-          options={{
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                beginAtZero: true,
-                display: false,
-              },
-              x: {
-                display: false,
-              },
-            },
-            plugins: {
-              legend: { display: false },
-              datalabels: {
-                color: '#FFF',
-                font: {
-                  weight: 'bold',
+                x: {
+                  display: false,
                 },
-                formatter: (_, context: Context) => context.dataset.label,
               },
-            },
-          }}
-          type="bubble"
-        />
-      </Section>
-    ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+              plugins: {
+                legend: { display: false },
+                datalabels: {
+                  color: '#FFF',
+                  font: {
+                    weight: 'bold',
+                  },
+                  formatter: (_, context: Context) => context.dataset.label,
+                },
+              },
+            }}
+            type="bubble"
+          />
+        ),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
+      )}
+    </Section>
   );
 };
 

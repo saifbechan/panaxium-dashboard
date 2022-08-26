@@ -21,6 +21,19 @@ const SectionToggles = () => {
         >
           Rythm Measurement
         </Button>
+        <Button
+          colorScheme="purple"
+          size="sm"
+          variant={sectionToggles['psd-measurement'] ? 'solid' : 'outline'}
+          onClick={() =>
+            setSectionToggles({
+              ...sectionToggles,
+              'psd-measurement': !sectionToggles['psd-measurement'],
+            })
+          }
+        >
+          PSD measurement
+        </Button>
       </ButtonGroup>
     </Box>
   );

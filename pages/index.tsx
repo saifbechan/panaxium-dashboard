@@ -1,6 +1,6 @@
 import { GAP } from '../lib/constants';
 import { Grid, GridItem, Spacer } from '@chakra-ui/react';
-import { profileOpenState, sectionTogglesState } from '../lib/store';
+import { profileOpenState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import Handle from '../components/Profile/handle';
 import ImpedanceMeasurement from '../components/ImpedanceMeasurement';
@@ -16,7 +16,6 @@ const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: 
 
 const Home: NextPage = () => {
   const profileOpen = useAtomValue(profileOpenState);
-  const sectionToggles = useAtomValue(sectionTogglesState);
 
   return (
     <Grid
@@ -41,9 +40,9 @@ const Home: NextPage = () => {
             md: 'repeat(2, minmax(0, 1fr))',
           }}
         >
-          <RythmMeasurement on={sectionToggles['rythm-measurement']} />
+          <RythmMeasurement />
 
-          <Grid gap={GAP} templateColumns="repeat(2, minmax(0, 1fr))">
+          <Grid autoColumns="minmax(0, 1fr)" autoFlow="column" gap={GAP}>
             <ImpedanceMeasurement />
             <PSDMeasurement />
           </Grid>

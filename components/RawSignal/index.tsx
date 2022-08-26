@@ -57,6 +57,7 @@ const RawSignal = ({
               datasets,
             }}
             options={{
+              maintainAspectRatio: false,
               events: ['click'],
               onClick: () => {
                 setSelectedSignal(signal);

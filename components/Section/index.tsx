@@ -29,7 +29,16 @@ const Section = ({
           </Tooltip>
         </Box>
 
-        <Heading as="h4" color="text.dimmed" fontWeight="normal" padding="0 0 20px 0" size="sm">
+        <Heading
+          as="h4"
+          color="text.dimmed"
+          fontWeight="normal"
+          overflow="hidden"
+          padding="0 0 20px 0"
+          size="sm"
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+        >
           {title}
         </Heading>
 
