@@ -7,13 +7,15 @@ const config: PlaywrightTestConfig = {
   retries: 2,
   outputDir: 'test-results/',
   webServer: {
-    command: 'yarn start -p 6060',
-    port: 6060,
+    command: 'yarn start -p 3030',
+    port: process.env.CI ? 3030 : 3000,
     timeout: 120 * 1000,
+    reuseExistingServer: !process.env.CI,
   },
 
   use: {
     trace: 'retry-with-trace',
+    baseURL: process.env.BASE_URL || 'http://localhost:3030',
   },
 
   projects: [

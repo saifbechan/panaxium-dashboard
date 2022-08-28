@@ -5,4 +5,4 @@ yarn type-check
 yarn lint
 yarn test:ci
 yarn build
-yarn playwright test
+CI=true yarn test:e2e
