@@ -6,16 +6,21 @@ const config: PlaywrightTestConfig = {
   testDir: path.join(__dirname, 'e2e'),
   retries: 2,
   outputDir: 'test-results/',
-  webServer: {
-    command: 'yarn start -p 3030',
-    port: process.env.CI ? 3030 : 3000,
-    timeout: 120 * 1000,
-    reuseExistingServer: !process.env.CI,
-  },
+
+  webServer: process.env.PREPUSH
+    ? {
+        command: 'yarn start -p 3030',
+        port: process.env.PREPUSH ? 3030 : 3000,
+        timeout: 120 * 1000,
+        reuseExistingServer: !process.env.PREPUSH,
+      }
+    : undefined,
 
   use: {
     trace: 'retry-with-trace',
-    baseURL: process.env.BASE_URL || 'http://localhost:3030',
+    baseURL:
+      process.env.BASE_URL ||
+      (process.env.PREPUSH ? 'http://localhost:3030' : 'http://localhost:3000'),
   },
 
   projects: [
@@ -37,4 +42,5 @@ const config: PlaywrightTestConfig = {
     },
   ],
 };
+
 export default config;
