@@ -5,7 +5,7 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
@@ -114,22 +114,3 @@ jobs:
         run: yarn test:e2e
         env:
           BASE_URL: ${{needs.deploy-preview.outputs.preview-url}}
-
-  deploy-production:
-    needs: [e2e-tests]
-    runs-on: ubuntu-20.04
-    name: Deploy to Vercel Production 🚀🚀
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'yarn'
-      - name: Install Vercel CLI
-        run: yarn global add vercel@canary
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
