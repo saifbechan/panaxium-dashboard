@@ -1,6 +1,6 @@
 {
-  "name": "Panaxium EEG Dashboard",
-  "short_name": "panaxium-dashboard",
+  "name": "EEG Dashboard",
+  "short_name": "EEG Dashboard",
   "theme_color": "#0C091E",
   "background_color": "#19172C",
   "display": "standalone",
