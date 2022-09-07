@@ -12,8 +12,8 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { Collapse } from '@chakra-ui/react';
+import { displaySignalsState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
-import { sectionTogglesState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
@@ -33,7 +33,7 @@ ChartJS.register(
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 const PSDMeasurement = () => {
-  const isOn = useAtomValue(sectionTogglesState)['psd-measurement'];
+  const isOn = !useAtomValue(displaySignalsState);
   const chartRef = useRef<ChartJS>(null);
 
   return (

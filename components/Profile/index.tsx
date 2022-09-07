@@ -3,7 +3,9 @@ import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
 import { useSetAtom } from 'jotai';
+import Device from '../Device';
 import Image from 'next/image';
+import SectionToggles from '../SectionToggles';
 import sb from './saif-bechan-teaser-image-rounded-modified.png';
 
 const Profile = () => {
@@ -80,6 +82,14 @@ const Profile = () => {
       <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
         ECOG Specifications
       </Text>
+
+      <Spacer h={10} />
+
+      <SectionToggles />
+
+      <Spacer h={10} />
+
+      <Device />
     </Box>
   );
 };

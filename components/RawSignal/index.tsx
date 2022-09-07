@@ -13,9 +13,10 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import { Collapse } from '@chakra-ui/react';
+import { displaySignalsState, selectedSignalState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
-import { selectedSignalState } from '../../lib/store';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
@@ -40,72 +41,75 @@ const RawSignal = ({
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
   signal: number;
 }) => {
+  const isOn = useAtomValue(displaySignalsState);
   const chartRef = useRef<ChartJS>(null);
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
   return (
-    <Section
-      border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
-      info="Some extra information"
-      title={`Raw Signal ${signal + 1}`}
-    >
-      {useMemo(
-        () => (
-          <Chart
-            ref={chartRef}
-            data={{
-              datasets,
-            }}
-            options={{
-              maintainAspectRatio: false,
-              events: ['click'],
-              onClick: () => {
-                setSelectedSignal(signal);
-              },
-              plugins: {
-                legend: { display: false },
-                datalabels: { display: false },
-                zoom: {
-                  pan: {
-                    enabled: true,
-                    mode: 'x',
-                  },
+    <Collapse animateOpacity in={isOn}>
+      <Section
+        border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
+        info="Some extra information"
+        title={`Raw Signal ${signal}`}
+      >
+        {useMemo(
+          () => (
+            <Chart
+              ref={chartRef}
+              data={{
+                datasets,
+              }}
+              options={{
+                maintainAspectRatio: false,
+                events: ['click'],
+                onClick: () => {
+                  setSelectedSignal(signal);
+                },
+                plugins: {
+                  legend: { display: false },
+                  datalabels: { display: false },
                   zoom: {
-                    pinch: {
+                    pan: {
                       enabled: true,
+                      mode: 'x',
                     },
-                    wheel: {
-                      enabled: true,
-                    },
-                    mode: 'x',
-                  },
-                },
-              },
-              scales: {
-                x: {
-                  type: 'realtime',
-                  realtime: {
-                    delay: 2000,
-                    onRefresh: (chart: ChartJS) => {
-                      chart.data.datasets.forEach((dataset, index) => {
-                        const next = {
-                          x: Date.now(),
-                          y: faker.datatype.float({ min: index, max: index + 1 }),
-                        };
-                        dataset.data.push(next);
-                      });
+                    zoom: {
+                      pinch: {
+                        enabled: true,
+                      },
+                      wheel: {
+                        enabled: true,
+                      },
+                      mode: 'x',
                     },
                   },
                 },
-              },
-            }}
-            type="line"
-          />
-        ),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
-      )}
-    </Section>
+                scales: {
+                  x: {
+                    type: 'realtime',
+                    realtime: {
+                      delay: 2000,
+                      onRefresh: (chart: ChartJS) => {
+                        chart.data.datasets.forEach((dataset, index) => {
+                          const next = {
+                            x: Date.now(),
+                            y: faker.datatype.float({ min: index, max: index + 1 }),
+                          };
+                          dataset.data.push(next);
+                        });
+                      },
+                    },
+                  },
+                },
+              }}
+              type="line"
+            />
+          ),
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          []
+        )}
+      </Section>
+    </Collapse>
   );
 };
 
