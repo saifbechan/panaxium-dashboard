@@ -1,41 +1,46 @@
-import { Box, ChakraProps, HStack, VStack } from '@chakra-ui/react';
+import { Box, ChakraProps, HStack, Tooltip, VStack } from '@chakra-ui/react';
 import { selectedSignalState } from '../../lib/store';
 import { useAtom } from 'jotai';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 let count = 0;
 
 const Dot = (props: ChakraProps) => {
   const countRef = useRef(0);
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
+  const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     if (countRef.current !== 0) return;
 
     count += 1;
     countRef.current = count;
+
+    setRerender(!rerender);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Box
-      _hover={{
-        backgroundColor: '#48438C',
-      }}
-      backgroundColor={selectedSignal === countRef.current ? '#48438C' : '#61586F'}
-      borderRadius="50%"
-      boxSize={4}
-      color="gray.300"
-      fontSize={10}
-      textAlign="center"
-      onClick={() => {
-        setSelectedSignal(countRef.current);
-      }}
-      {...props}
-      cursor="pointer"
-      lineHeight={4}
-      transition="1s all"
-    />
+    <Tooltip label={countRef.current}>
+      <Box
+        _hover={{
+          backgroundColor: '#48438C',
+        }}
+        backgroundColor={selectedSignal === countRef.current ? '#48438C' : '#61586F'}
+        borderRadius="50%"
+        boxSize={4}
+        color="gray.300"
+        fontSize={10}
+        textAlign="center"
+        onClick={() => {
+          setSelectedSignal(countRef.current);
+        }}
+        {...props}
+        cursor="pointer"
+        lineHeight={4}
+        transition="1s all"
+      />
+    </Tooltip>
   );
 };
 
