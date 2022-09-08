@@ -2333,13 +2333,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@playwright/test@^1.25.1":
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.25.1.tgz#9847234b6f2b0cca71962b338da7db366a1e9720"
-  integrity sha512-IJ4X0yOakXtwkhbnNzKkaIgXe6df7u3H3FnuhI9Jqh+CdO0e/lYQlDLYiyI9cnXK8E7UAppAWP+VqAv6VX7HQg==
+"@playwright/test@^1.25.2":
+  version "1.25.2"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.25.2.tgz#e726cf4844f096315c3954fdb3abf295cede43ba"
+  integrity sha512-6qPznIR4Fw02OMbqXUPMG6bFFg1hDVNEdihKy0t9K0dmRbus1DyP5Q5XFQhGwEHQkLG5hrSfBuu9CW/foqhQHQ==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.25.1"
+    playwright-core "1.25.2"
 
 "@popperjs/core@^2.9.3":
   version "2.11.6"
@@ -2520,10 +2520,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.14.tgz#0fe081752a3333392d00586d815485a17c2cf3c9"
   integrity sha512-6bbDaETVi8oyIARulOE9qF1/Qdi/23z6emrUh0fNJRUmjznqrixD4MpGDdgOFk5Xb0m2H6Xu42JGdvAxaJR/wA==
 
-"@types/node@18.7.15":
-  version "18.7.15"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.15.tgz#20ae1ec80c57ee844b469f968a1cd511d4088b29"
-  integrity sha512-XnjpaI8Bgc3eBag2Aw4t2Uj/49lLBSStHWfqKvIuXD7FIrZyMLWp8KuAFHAqxMZYTF9l08N1ctUn9YNybZJVmQ==
+"@types/node@18.7.16":
+  version "18.7.16"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.16.tgz#0eb3cce1e37c79619943d2fd903919fc30850601"
+  integrity sha512-EQHhixfu+mkqHMZl1R2Ovuvn47PUw18azMJOTwSZr9/fhzHNGXAJ0ma0dayRVchprpCj0Kc1K1xKoWaATWF1qg==
 
 "@types/node@^14.0.0":
   version "14.18.26"
@@ -4288,10 +4288,10 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-framer-motion@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.3.0.tgz#4896b01c801eff8062c28fcb6db68621512fb814"
-  integrity sha512-Ldsseepvlnnmqqj1Gu1XWyUIDQle0NnWP34zPM8nyllIRyw2HyTObALoVKLP7XmonLzaePEgMjlFRQg/WM391w==
+framer-motion@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.3.2.tgz#9768092cd98cf0ebaf70864f1248f2e703305a15"
+  integrity sha512-BTG0BqJSwxoFBWpwaaxS/954DGZFsluF+dUv9Hfq53VNkwUt5g+wYTEM66oTUhiH/+6R/y0Rq+BmkUBcmzbyMQ==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
@@ -5776,10 +5776,10 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
-playwright-core@1.25.1:
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.25.1.tgz#abe56aec8bef645fba988320d9f9328fafab0446"
-  integrity sha512-lSvPCmA2n7LawD2Hw7gSCLScZ+vYRkhU8xH0AapMyzwN+ojoDqhkH/KIEUxwNu2PjPoE/fcE0wLAksdOhJ2O5g==
+playwright-core@1.25.2:
+  version "1.25.2"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.25.2.tgz#ea4baa398a4d45fcdfe48799482b599e3d0f033f"
+  integrity sha512-0yTbUE9lIddkEpLHL3u8PoCL+pWiZtj5A/j3U7YoNjcmKKDGBnCrgHJMzwd2J5vy6l28q4ki3JIuz7McLHhl1A==
 
 popmotion@11.0.5:
   version "11.0.5"

@@ -24,7 +24,7 @@ const SectionToggles = () => {
   return (
     <Box backgroundColor="#29293B" padding="10px">
       <FormControl alignItems="center" display="flex">
-        <Toggle label="Rythm Measurement" />
+        <Toggle label="Display EEG" />
       </FormControl>
     </Box>
   );
