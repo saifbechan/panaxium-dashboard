@@ -119,6 +119,12 @@ const Device = () => {
         <FourDots />
       </HStack>
       <HStack justifyContent="space-around" width="100%">
+        <FourDots />
+        <FourDots />
+        <FourDots />
+        <FourDots />
+      </HStack>
+      <HStack justifyContent="space-around" width="100%">
         <ThreeDots />
         <FourDots />
         <FourDots />
