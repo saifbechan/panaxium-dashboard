@@ -44,7 +44,7 @@
     "@fontsource/raleway": "^4.5.10",
     "@playwright/test": "^1.25.2",
     "@testing-library/react": "^13.4.0",
-    "@types/node": "18.7.16",
+    "@types/node": "18.7.17",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
