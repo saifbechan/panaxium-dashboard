@@ -20,7 +20,6 @@ const RawSignal = ({
   return (
     <Section
       border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
-      boxed={false}
       title={`#${signal}`}
     >
       {useMemo(
