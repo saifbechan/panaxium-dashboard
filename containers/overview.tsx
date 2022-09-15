@@ -5,7 +5,7 @@ import Connectivity from '../components/Connectivity';
 import RythmByBand from '../components/RythmByBand';
 import RythmByChannel from '../components/RythmByChannel';
 import dynamic from 'next/dynamic';
-import rawSignals from '../lib/raw-signals';
+import rawSignalsExtra from '../lib/raw-signals-extra';
 
 const RythmAllNoSSR = dynamic(() => import('../components/RythmAll'), {
   ssr: false,
@@ -21,19 +21,7 @@ const Overview = () => {
           md: 'repeat(3, minmax(0, 1fr))',
         }}
       >
-        <RythmAllNoSSR
-          datasets={rawSignals
-            .concat([
-              {
-                borderColor: '#48438C',
-                borderWidth: 5,
-                cubicInterpolationMode: 'monotone',
-                data: [],
-                pointRadius: 0,
-              },
-            ])
-            .reverse()}
-        />
+        <RythmAllNoSSR datasets={rawSignalsExtra} />
 
         <RythmByBand />
 
