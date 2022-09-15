@@ -17,7 +17,7 @@ const RythmAll = ({
   const chartRef = useRef<ChartJS>(null);
 
   return (
-    <Collapse animateOpacity in={sectionToggles['rythm_all']}>
+    <Collapse animateOpacity in={sectionToggles['rythm_all']} style={{ gridColumn: 'span 2' }}>
       <Section border="1px solid #401D56" info="Some extra information" title="Rythm (all)">
         {useMemo(
           () => (

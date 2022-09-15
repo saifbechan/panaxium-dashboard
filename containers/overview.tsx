@@ -18,14 +18,14 @@ const Overview = () => {
         gap={GAP}
         templateColumns={{
           base: '1fr',
-          md: 'repeat(3, minmax(0, 1fr))',
+          md: 'repeat(4, minmax(0, 1fr))',
         }}
       >
         <RythmAllNoSSR datasets={rawSignalsExtra} />
 
-        <RythmByBand />
-
         <RythmByChannel />
+
+        <RythmByBand />
 
         <Connectivity />
 

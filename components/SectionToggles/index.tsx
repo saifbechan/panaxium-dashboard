@@ -53,8 +53,8 @@ const SectionToggles = () => {
       <FormControl alignItems="center" display="flex">
         <ToggleEEG label="EEG" />
         <Toggle id="rythm_all" label="Rythm (all)" />
-        <Toggle id="rythm_band" label="Rythm (band)" />
         <Toggle id="rythm_channel" label="Rythm (channel)" />
+        <Toggle id="rythm_band" label="Rythm (band)" />
         <Toggle id="connectivity" label="Connectivity" />
         <Toggle id="biomarker_detection" label="Biomarker detection" />
       </FormControl>

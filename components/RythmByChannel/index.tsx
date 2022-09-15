@@ -13,7 +13,7 @@ const RythmByChannel = () => {
   const labels = ['delta', 'theta', 'alpha', 'beta', 'gamma'];
 
   return (
-    <Collapse animateOpacity in={sectionToggles['rythm_channel']}>
+    <Collapse animateOpacity in={sectionToggles['rythm_channel']} style={{ gridColumn: 'span 2' }}>
       {useMemo(
         () => (
           <Section
