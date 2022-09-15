@@ -1,22 +1,10 @@
 import { Bar } from 'react-chartjs-2';
-import {
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  Title,
-  Tooltip,
-} from 'chart.js';
 import { Collapse } from '@chakra-ui/react';
 import { displaySignalsState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
 import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
 import Section from '../Section';
-import StreamingPlugin from 'chartjs-plugin-streaming';
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, StreamingPlugin);
 
 const RythmMeasurement = () => {
   const isOn = !useAtomValue(displaySignalsState);

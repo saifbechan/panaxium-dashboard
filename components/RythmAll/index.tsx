@@ -1,17 +1,5 @@
 import 'chartjs-adapter-luxon';
-import {
-  BubbleDataPoint,
-  CategoryScale,
-  ChartDataset,
-  Chart as ChartJS,
-  Legend,
-  LineElement,
-  LinearScale,
-  PointElement,
-  ScatterDataPoint,
-  Title,
-  Tooltip,
-} from 'chart.js';
+import { BubbleDataPoint, ChartDataset, Chart as ChartJS, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { Collapse } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
@@ -19,20 +7,6 @@ import { sectionTogglesState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
-import StreamingPlugin from 'chartjs-plugin-streaming';
-import zoomPlugin from 'chartjs-plugin-zoom';
-
-ChartJS.register(
-  StreamingPlugin,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  zoomPlugin
-);
 
 const RythmAll = ({
   datasets,

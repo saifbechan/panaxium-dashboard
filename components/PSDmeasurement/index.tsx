@@ -1,34 +1,11 @@
-import {
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Filler,
-  Legend,
-  LineController,
-  LineElement,
-  LinearScale,
-  PointElement,
-  Tooltip,
-} from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import { Chart as ChartJS } from 'chart.js';
 import { Collapse } from '@chakra-ui/react';
 import { displaySignalsState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
 import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
-
-ChartJS.register(
-  LinearScale,
-  CategoryScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Legend,
-  Tooltip,
-  LineController,
-  Filler
-);
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
