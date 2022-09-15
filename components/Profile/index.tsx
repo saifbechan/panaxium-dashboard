@@ -4,9 +4,7 @@ import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
 import { useSetAtom } from 'jotai';
 import Device from '../Device';
-import Image from 'next/image';
 import SectionToggles from '../SectionToggles';
-import sb from './saif-bechan-teaser-image-rounded-modified.png';
 
 const Profile = () => {
   const setProfileOpen = useSetAtom(profileOpenState);
@@ -29,25 +27,9 @@ const Profile = () => {
         </Box>
       </Grid>
 
-      <VStack color="text.dimmed" padding="30px 0" spacing={8}>
-        <Text fontSize="lg">DATE: November 5, 2019</Text>
-
-        <Box
-          backgroundColor="white"
-          border="4px solid white"
-          borderRadius="50%"
-          boxSize="40"
-          position="relative"
-        >
-          <Image alt="avatar" layout="fill" priority src={sb} />
-        </Box>
-
-        <Heading as="h1" size="xl">
-          Saif Bechan
-        </Heading>
-      </VStack>
-
-      <Box background="linear-gradient(to right, #2657bb, #45bdc8)" h={1} />
+      <Heading as="h1" mt={10} size="md">
+        Saif Bechan
+      </Heading>
 
       <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
         Information about the patient:

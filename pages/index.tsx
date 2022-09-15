@@ -11,6 +11,9 @@ import rawSignals from '../lib/raw-signals';
 import type { NextPage } from 'next';
 
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: false });
+const RawSignalsCombinedNoSSR = dynamic(() => import('../components/RawSignalsCombined'), {
+  ssr: false,
+});
 
 const Home: NextPage = () => {
   const profileOpen = useAtomValue(profileOpenState);
@@ -32,6 +35,20 @@ const Home: NextPage = () => {
             md: 'repeat(2, minmax(0, 1fr))',
           }}
         >
+          <RawSignalsCombinedNoSSR
+            datasets={rawSignals
+              .concat([
+                {
+                  borderColor: '#48438C',
+                  borderWidth: 5,
+                  cubicInterpolationMode: 'monotone',
+                  data: [],
+                  pointRadius: 0,
+                },
+              ])
+              .reverse()}
+          />
+
           <RythmMeasurement />
 
           <PSDMeasurement />

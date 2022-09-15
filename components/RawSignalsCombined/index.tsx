@@ -14,9 +14,9 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { Collapse } from '@chakra-ui/react';
-import { displaySignalsState, selectedSignalState } from '../../lib/store';
+import { displaySignalsState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
 import StreamingPlugin from 'chartjs-plugin-streaming';
@@ -34,24 +34,17 @@ ChartJS.register(
   zoomPlugin
 );
 
-const RawSignal = ({
+const RawSignalsCombined = ({
   datasets,
-  signal,
 }: {
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
-  signal: number;
 }) => {
   const isOn = useAtomValue(displaySignalsState);
   const chartRef = useRef<ChartJS>(null);
-  const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
   return (
-    <Collapse animateOpacity in={isOn}>
-      <Section
-        border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
-        info="Some extra information"
-        title={`Raw Signal ${signal}`}
-      >
+    <Collapse animateOpacity in={!isOn}>
+      <Section border="1px solid #401D56" info="Some extra information" title={`Raw Signals`}>
         {useMemo(
           () => (
             <Chart
@@ -61,29 +54,29 @@ const RawSignal = ({
               }}
               options={{
                 maintainAspectRatio: false,
-                events: ['click'],
-                onClick: () => {
-                  setSelectedSignal(signal);
-                },
                 plugins: {
                   legend: { display: false },
                   datalabels: { display: false },
                 },
                 scales: {
                   x: {
+                    display: false,
                     type: 'realtime',
                     realtime: {
                       delay: 2000,
                       onRefresh: (chart: ChartJS) => {
-                        chart.data.datasets.forEach((dataset, index) => {
+                        chart.data.datasets.forEach((dataset) => {
                           const next = {
                             x: Date.now(),
-                            y: faker.datatype.float({ min: index, max: index + 1 }),
+                            y: faker.datatype.float({ min: 0, max: 1 }),
                           };
                           dataset.data.push(next);
                         });
                       },
                     },
+                  },
+                  y: {
+                    display: false,
                   },
                 },
               }}
@@ -98,4 +91,4 @@ const RawSignal = ({
   );
 };
 
-export default RawSignal;
+export default RawSignalsCombined;
