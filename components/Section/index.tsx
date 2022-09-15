@@ -12,7 +12,7 @@ const Section = ({
   ...props
 }: {
   title: string;
-  info: string;
+  info?: string;
   boxed?: boolean;
   children: ReactNode;
 } & ChakraProps) => {
@@ -21,13 +21,15 @@ const Section = ({
   return (
     <GridItem>
       <Box backgroundColor="#29293B" border="1px solid #401D56" padding="10px" {...props}>
-        <Box textAlign="right">
-          <Tooltip hasArrow label={info}>
-            <span>
-              <Icon as={BsQuestionCircle} color="text.dimmed" />
-            </span>
-          </Tooltip>
-        </Box>
+        {info ? (
+          <Box textAlign="right">
+            <Tooltip hasArrow label={info}>
+              <span>
+                <Icon as={BsQuestionCircle} color="text.dimmed" />
+              </span>
+            </Tooltip>
+          </Box>
+        ) : null}
 
         <Heading
           as="h4"
