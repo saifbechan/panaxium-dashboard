@@ -27,7 +27,6 @@ const RythmAll = ({
                 datasets,
               }}
               options={{
-                maintainAspectRatio: false,
                 plugins: {
                   legend: { display: false },
                   datalabels: { display: false },

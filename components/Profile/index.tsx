@@ -1,12 +1,13 @@
 import { Box, Grid, Heading, Spacer } from '@chakra-ui/react';
 import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
-import { profileOpenState } from '../../lib/store';
-import { useSetAtom } from 'jotai';
+import { displaySignalsState, profileOpenState } from '../../lib/store';
+import { useAtomValue, useSetAtom } from 'jotai';
 import DeviceConfig from '../DeviceConfig';
 
 const Profile = () => {
   const setProfileOpen = useSetAtom(profileOpenState);
+  const displaySignals = useAtomValue(displaySignalsState);
 
   return (
     <Box backgroundColor="#0C091E" borderRadius={{ base: 0, md: '0 15px 15px 0' }} padding="30px">
@@ -30,7 +31,7 @@ const Profile = () => {
         Saif Bechan
       </Heading>
 
-      <DeviceConfig />
+      {displaySignals ? <DeviceConfig /> : null}
     </Box>
   );
 };

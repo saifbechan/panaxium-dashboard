@@ -53,7 +53,7 @@ const Home: NextPage = () => {
     >
       <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>
 
-      <VStack gap={GAP}>
+      <VStack gap={2}>
         <SectionToggles />
 
         {displaySignals ? <RawSignals /> : <Overview />}

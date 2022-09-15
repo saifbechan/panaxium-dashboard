@@ -43,8 +43,7 @@ const Section = ({
         >
           {title}
         </Heading>
-
-        {boxed ? <Box h={profileOpen ? '225px' : '250px'}>{children}</Box> : <>{children}</>}
+        {children}
       </Box>
     </GridItem>
   );
