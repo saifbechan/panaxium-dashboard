@@ -1,10 +1,9 @@
-import { Box, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
+import { Box, Grid, Heading, Spacer } from '@chakra-ui/react';
 import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
 import { useSetAtom } from 'jotai';
-import Device from '../Device';
-import SectionToggles from '../SectionToggles';
+import DeviceConfig from '../DeviceConfig';
 
 const Profile = () => {
   const setProfileOpen = useSetAtom(profileOpenState);
@@ -27,51 +26,11 @@ const Profile = () => {
         </Box>
       </Grid>
 
-      <Heading as="h1" mt={10} size="md">
+      <Heading as="h1" mb={10} mt={10} size="md">
         Saif Bechan
       </Heading>
 
-      <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
-        Information about the patient:
-      </Text>
-      <VStack align="stretch" spacing={2}>
-        <Box>
-          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
-            Weight
-          </Text>
-          <Text fontSize="md" fontWeight="bold">
-            70kg
-          </Text>
-        </Box>
-        <Box>
-          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
-            Height
-          </Text>
-          <Text fontSize="md" fontWeight="bold">
-            1.75 cm
-          </Text>
-        </Box>
-        <Box>
-          <Text color="text.dimmed" fontSize="md" textTransform="uppercase">
-            N
-          </Text>
-          <Text fontSize="md" fontWeight="bold">
-            09876
-          </Text>
-        </Box>
-      </VStack>
-
-      <Text color="text.dimmed" fontSize="sm" padding="20px 0 10px 0">
-        ECOG Specifications
-      </Text>
-
-      <Spacer h={10} />
-
-      <SectionToggles />
-
-      <Spacer h={10} />
-
-      <Device />
+      <DeviceConfig />
     </Box>
   );
 };

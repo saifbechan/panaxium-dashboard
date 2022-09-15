@@ -79,7 +79,7 @@ const FiveDots = () => (
   </VStack>
 );
 
-const Device = () => {
+const DeviceConfig = () => {
   return (
     <VStack spacing={6}>
       <HStack justifyContent="space-around" width="100%">
@@ -134,4 +134,4 @@ const Device = () => {
   );
 };
 
-export default Device;
+export default DeviceConfig;

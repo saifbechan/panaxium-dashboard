@@ -14,8 +14,8 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { Collapse } from '@chakra-ui/react';
-import { displaySignalsState } from '../../lib/store';
 import { faker } from '@faker-js/faker';
+import { sectionTogglesState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
@@ -34,17 +34,17 @@ ChartJS.register(
   zoomPlugin
 );
 
-const RawSignalsCombined = ({
+const RythmAll = ({
   datasets,
 }: {
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
 }) => {
-  const isOn = useAtomValue(displaySignalsState);
+  const sectionToggles = useAtomValue(sectionTogglesState);
   const chartRef = useRef<ChartJS>(null);
 
   return (
-    <Collapse animateOpacity in={!isOn}>
-      <Section border="1px solid #401D56" info="Some extra information" title={`Raw Signals`}>
+    <Collapse animateOpacity in={sectionToggles['rythm_all']}>
+      <Section border="1px solid #401D56" info="Some extra information" title="Rythm (all)">
         {useMemo(
           () => (
             <Chart
@@ -91,4 +91,4 @@ const RawSignalsCombined = ({
   );
 };
 
-export default RawSignalsCombined;
+export default RythmAll;

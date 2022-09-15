@@ -1,11 +1,12 @@
 import { GAP } from '../lib/constants';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, VStack } from '@chakra-ui/react';
 import { displaySignalsState, profileOpenState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import Handle from '../components/Profile/handle';
 import Overview from '../containers/overview';
 import Profile from '../components/Profile';
 import RawSignals from '../containers/raw-signals';
+import SectionToggles from '../components/SectionToggles';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
@@ -22,7 +23,11 @@ const Home: NextPage = () => {
     >
       <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>
 
-      {displaySignals ? <RawSignals /> : <Overview />}
+      <VStack>
+        <SectionToggles />
+
+        {displaySignals ? <RawSignals /> : <Overview />}
+      </VStack>
     </Grid>
   );
 };
