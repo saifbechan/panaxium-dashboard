@@ -4,6 +4,7 @@ import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
 import { useSetAtom } from 'jotai';
 import DeviceConfig from '../DeviceConfig';
+import EEGToggle from '../EEGToggle';
 
 const Profile = () => {
   const setProfileOpen = useSetAtom(profileOpenState);
@@ -13,7 +14,9 @@ const Profile = () => {
       <Grid gap={6} templateColumns="1fr 1fr 8fr 1fr">
         <Icon as={BsThreeDotsVertical} boxSize={6} cursor="pointer" />
         <Icon as={BsGearFill} boxSize={6} cursor="pointer" />
+
         <Spacer />
+
         <Box
           alignItems="center"
           cursor="pointer"
@@ -29,6 +32,8 @@ const Profile = () => {
       <Heading as="h1" mb={10} mt={10} size="md">
         Saif Bechan
       </Heading>
+
+      <EEGToggle />
 
       <DeviceConfig />
     </Box>

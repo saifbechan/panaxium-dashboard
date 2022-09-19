@@ -28,30 +28,10 @@ const Toggle = ({ id, label }: { id: keyof SectionToggleIds; label: string }) =>
   );
 };
 
-const ToggleEEG = ({ label }: { label: string }) => {
-  const [displaySignals, setDisplaySignals] = useAtom(displaySignalsState);
-
-  return (
-    <>
-      <FormLabel fontSize="sm" mb="0">
-        {label}
-      </FormLabel>
-      <Switch
-        colorScheme="purple"
-        isChecked={displaySignals}
-        mr={8}
-        size="sm"
-        onChange={() => setDisplaySignals(!displaySignals)}
-      />
-    </>
-  );
-};
-
 const SectionToggles = () => {
   return (
-    <Box backgroundColor="#29293B" padding="10px" w="100%">
+    <Box backgroundColor="#29293B" mb={4} padding="10px" w="100%">
       <FormControl alignItems="center" display="flex">
-        <ToggleEEG label="EEG" />
         <Toggle id="rhythm_all" label="Rhythm (all)" />
         <Toggle id="rhythm_channel" label="Rhythm (channel)" />
         <Toggle id="rhythm_band" label="Rhythm (band)" />

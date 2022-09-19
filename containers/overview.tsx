@@ -4,6 +4,7 @@ import BiomarkerDetection from '../components/BiomarkerDetection';
 import Connectivity from '../components/Connectivity';
 import RhythmByBand from '../components/RhythmByBand';
 import RhythmByChannel from '../components/RhythmByChannel';
+import SectionToggles from '../components/SectionToggles';
 import dynamic from 'next/dynamic';
 import rawSignalsExtra from '../lib/raw-signals-extra';
 
@@ -14,6 +15,8 @@ const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
 const Overview = () => {
   return (
     <GridItem marginRight={{ base: 0, md: 6 }} w="100%">
+      <SectionToggles />
+
       <Grid
         gap={GAP}
         templateColumns={{

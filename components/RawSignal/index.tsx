@@ -19,8 +19,10 @@ const RawSignal = ({
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
   return (
-    <Section border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}>
-      <Text fontSize="xs">{signal}</Text>
+    <Section border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`} padding={1}>
+      <Text fontSize="xs" mb={1}>
+        {signal}
+      </Text>
       {useMemo(
         () => (
           <Chart

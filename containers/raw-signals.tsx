@@ -11,7 +11,7 @@ const RawSignals = () => {
         gap={1}
         templateColumns={{
           base: '1fr',
-          md: 'repeat(16, minmax(0, 1fr))',
+          md: 'repeat(12, minmax(0, 1fr))',
         }}
         templateRows={{
           base: '1fr',
