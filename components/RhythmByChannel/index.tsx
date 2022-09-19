@@ -7,19 +7,19 @@ import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
 import Section from '../Section';
 
-const RythmByChannel = () => {
+const RhythmByChannel = () => {
   const sectionToggles = useAtomValue(sectionTogglesState);
 
   const labels = ['delta', 'theta', 'alpha', 'beta', 'gamma'];
 
   return (
-    <Collapse animateOpacity in={sectionToggles['rythm_channel']} style={{ gridColumn: 'span 2' }}>
+    <Collapse animateOpacity in={sectionToggles['rhythm_channel']} style={{ gridColumn: 'span 2' }}>
       {useMemo(
         () => (
           <Section
             border="1px solid #401D56"
             info="Some extra information"
-            title="Rythm by channel"
+            title="Rhythm by channel"
           >
             <Select placeholder="Select channel" size="xs">
               {[...new Array(128)].map((_item, index) => (
@@ -59,4 +59,4 @@ const RythmByChannel = () => {
   );
 };
 
-export default RythmByChannel;
+export default RhythmByChannel;

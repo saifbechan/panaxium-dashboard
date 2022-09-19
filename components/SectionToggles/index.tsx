@@ -52,9 +52,9 @@ const SectionToggles = () => {
     <Box backgroundColor="#29293B" padding="10px" w="100%">
       <FormControl alignItems="center" display="flex">
         <ToggleEEG label="EEG" />
-        <Toggle id="rythm_all" label="Rythm (all)" />
-        <Toggle id="rythm_channel" label="Rythm (channel)" />
-        <Toggle id="rythm_band" label="Rythm (band)" />
+        <Toggle id="rhythm_all" label="Rhythm (all)" />
+        <Toggle id="rhythm_channel" label="Rhythm (channel)" />
+        <Toggle id="rhythm_band" label="Rhythm (band)" />
         <Toggle id="connectivity" label="Connectivity" />
         <Toggle id="biomarker_detection" label="Biomarker detection" />
       </FormControl>

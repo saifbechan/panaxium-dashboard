@@ -8,7 +8,7 @@ import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
 
-const RythmAll = ({
+const RhythmAll = ({
   datasets,
 }: {
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
@@ -17,8 +17,8 @@ const RythmAll = ({
   const chartRef = useRef<ChartJS>(null);
 
   return (
-    <Collapse animateOpacity in={sectionToggles['rythm_all']} style={{ gridColumn: 'span 2' }}>
-      <Section border="1px solid #401D56" info="Some extra information" title="Rythm (all)">
+    <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 2' }}>
+      <Section border="1px solid #401D56" info="Some extra information" title="Rhythm (all)">
         {useMemo(
           () => (
             <Chart
@@ -65,4 +65,4 @@ const RythmAll = ({
   );
 };
 
-export default RythmAll;
+export default RhythmAll;

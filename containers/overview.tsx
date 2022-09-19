@@ -2,12 +2,12 @@ import { GAP } from '../lib/constants';
 import { Grid, GridItem } from '@chakra-ui/react';
 import BiomarkerDetection from '../components/BiomarkerDetection';
 import Connectivity from '../components/Connectivity';
-import RythmByBand from '../components/RythmByBand';
-import RythmByChannel from '../components/RythmByChannel';
+import RhythmByBand from '../components/RhythmByBand';
+import RhythmByChannel from '../components/RhythmByChannel';
 import dynamic from 'next/dynamic';
 import rawSignalsExtra from '../lib/raw-signals-extra';
 
-const RythmAllNoSSR = dynamic(() => import('../components/RythmAll'), {
+const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
   ssr: false,
 });
 
@@ -21,11 +21,11 @@ const Overview = () => {
           md: 'repeat(4, minmax(0, 1fr))',
         }}
       >
-        <RythmAllNoSSR datasets={rawSignalsExtra} />
+        <RhythmAllNoSSR datasets={rawSignalsExtra} />
 
-        <RythmByChannel />
+        <RhythmByChannel />
 
-        <RythmByBand />
+        <RhythmByBand />
 
         <Connectivity />
 
