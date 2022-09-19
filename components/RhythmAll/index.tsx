@@ -7,13 +7,12 @@ import { sectionTogglesState, signalsMinMaxState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
 import Section from '../Section';
+import lfpSegment from '../../data/lfp-segment';
 
 const RhythmAll = ({
   datasets,
-  lfpSegment,
 }: {
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
-  lfpSegment: number[][];
 }) => {
   const sectionToggles = useAtomValue(sectionTogglesState);
   const { min, max } = useAtomValue(signalsMinMaxState);

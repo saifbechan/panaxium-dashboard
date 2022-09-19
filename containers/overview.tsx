@@ -1,12 +1,13 @@
 import { GAP } from '../lib/constants';
 import { Grid, GridItem } from '@chakra-ui/react';
+import { displaySignalsState } from '../lib/store';
+import { useAtomValue } from 'jotai';
 import BiomarkerDetection from '../components/BiomarkerDetection';
 import Connectivity from '../components/Connectivity';
 import RhythmByBand from '../components/RhythmByBand';
 import RhythmByChannel from '../components/RhythmByChannel';
 import SectionToggles from '../components/SectionToggles';
 import dynamic from 'next/dynamic';
-import lfpSegment from '../data/lfp-segment';
 import rawSignalsExtra from '../lib/raw-signals-extra';
 
 const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
@@ -14,8 +15,10 @@ const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
 });
 
 const Overview = () => {
+  const displaySignals = useAtomValue(displaySignalsState);
+
   return (
-    <GridItem marginRight={{ base: 0, md: 6 }} w="100%">
+    <GridItem display={displaySignals ? 'none' : 'block'} marginRight={{ base: 0, md: 6 }} w="100%">
       <SectionToggles />
 
       <Grid
@@ -25,7 +28,7 @@ const Overview = () => {
           md: 'repeat(4, minmax(0, 1fr))',
         }}
       >
-        <RhythmAllNoSSR datasets={rawSignalsExtra} lfpSegment={lfpSegment} />
+        <RhythmAllNoSSR datasets={rawSignalsExtra} />
 
         <RhythmByChannel />
 

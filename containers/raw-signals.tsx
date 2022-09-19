@@ -1,4 +1,6 @@
 import { Grid, GridItem } from '@chakra-ui/react';
+import { displaySignalsState } from '../lib/store';
+import { useAtomValue } from 'jotai';
 import dynamic from 'next/dynamic';
 import lfpSegment from '../data/lfp-segment';
 import rawSignals from '../lib/raw-signals';
@@ -6,8 +8,10 @@ import rawSignals from '../lib/raw-signals';
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: false });
 
 const RawSignals = () => {
+  const displaySignals = useAtomValue(displaySignalsState);
+
   return (
-    <GridItem marginRight={{ base: 0, md: 6 }}>
+    <GridItem display={displaySignals ? 'block' : 'none'} marginRight={{ base: 0, md: 6 }}>
       <Grid
         gap={1}
         templateColumns={{
