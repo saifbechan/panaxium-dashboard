@@ -6,6 +6,7 @@ import RhythmByBand from '../components/RhythmByBand';
 import RhythmByChannel from '../components/RhythmByChannel';
 import SectionToggles from '../components/SectionToggles';
 import dynamic from 'next/dynamic';
+import lfpSegment from '../data/lfp-segment';
 import rawSignalsExtra from '../lib/raw-signals-extra';
 
 const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
@@ -24,7 +25,7 @@ const Overview = () => {
           md: 'repeat(4, minmax(0, 1fr))',
         }}
       >
-        <RhythmAllNoSSR datasets={rawSignalsExtra} />
+        <RhythmAllNoSSR datasets={rawSignalsExtra} lfpSegment={lfpSegment} />
 
         <RhythmByChannel />
 

@@ -3,18 +3,22 @@ import { BubbleDataPoint, ChartDataset, Chart as ChartJS, ScatterDataPoint } fro
 import { Chart } from 'react-chartjs-2';
 import { Collapse } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
-import { sectionTogglesState } from '../../lib/store';
+import { sectionTogglesState, signalsMinMaxState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useMemo, useRef } from 'react';
 import Section from '../Section';
 
 const RhythmAll = ({
   datasets,
+  lfpSegment,
 }: {
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
+  lfpSegment: number[][];
 }) => {
   const sectionToggles = useAtomValue(sectionTogglesState);
   const chartRef = useRef<ChartJS>(null);
+  const { min, max } = useAtomValue(signalsMinMaxState);
+  const pointer = useRef(0);
 
   return (
     <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 2' }}>
@@ -39,18 +43,31 @@ const RhythmAll = ({
                       delay: 2000,
                       refresh: 20,
                       onRefresh: (chart: ChartJS) => {
-                        chart.data.datasets.forEach((dataset) => {
+                        chart.data.datasets.forEach((dataset, index) => {
+                          const y = lfpSegment[index]
+                            ? lfpSegment[index][pointer.current]
+                            : faker.datatype.float({ min, max });
+
                           const next = {
                             x: Date.now(),
-                            y: faker.datatype.float({ min: 0, max: 1 }),
+                            y,
                           };
                           dataset.data.push(next);
                         });
+
+                        if (pointer.current === 500) {
+                          pointer.current = 0;
+                          return;
+                        }
+
+                        pointer.current += 1;
                       },
                     },
                   },
                   y: {
                     display: false,
+                    min,
+                    max,
                   },
                 },
               }}

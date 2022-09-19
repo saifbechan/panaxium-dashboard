@@ -1,5 +1,6 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import lfpSegment from '../data/lfp-segment';
 import rawSignals from '../lib/raw-signals';
 
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: false });
@@ -11,7 +12,7 @@ const RawSignals = () => {
         gap={1}
         templateColumns={{
           base: '1fr',
-          md: 'repeat(12, minmax(0, 1fr))',
+          md: 'repeat(16, minmax(0, 1fr))',
         }}
         templateRows={{
           base: '1fr',
@@ -19,7 +20,12 @@ const RawSignals = () => {
         }}
       >
         {rawSignals.map((datasets, signal) => (
-          <RawSignalsNoSSR key={signal + 1} datasets={[datasets]} signal={signal + 1} />
+          <RawSignalsNoSSR
+            key={signal + 1}
+            datasets={[datasets]}
+            lfpSegment={lfpSegment}
+            signal={signal + 1}
+          />
         ))}
       </Grid>
     </GridItem>

@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import lfpSegment from '../data/lfp-segment';
 
 export const profileOpenState = atom(true);
 
@@ -20,4 +21,19 @@ export const sectionTogglesState = atom<SectionToggleIds>({
   rhythm_channel: true,
   connectivity: true,
   biomarker_detection: true,
+});
+
+export const signalsMinMaxState = atom<{ min: number; max: number }>(() => {
+  const minMax = { min: Infinity, max: -Infinity };
+  lfpSegment.map((signalValues) => {
+    signalValues.map((signalValue) => {
+      if (signalValue < minMax.min) {
+        minMax.min = signalValue;
+      }
+      if (signalValue > minMax.max) {
+        minMax.max = signalValue;
+      }
+    });
+  });
+  return minMax;
 });
