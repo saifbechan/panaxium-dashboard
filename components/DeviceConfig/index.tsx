@@ -81,7 +81,7 @@ const FiveDots = () => (
 
 const DeviceConfig = () => {
   return (
-    <VStack spacing={6}>
+    <VStack spacing={4}>
       <HStack justifyContent="space-around" width="100%">
         <FiveDots />
         <FourDots />

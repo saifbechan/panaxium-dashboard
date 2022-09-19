@@ -48,7 +48,7 @@ const Home: NextPage = () => {
       gap={GAP}
       templateColumns={{
         base: '1fr',
-        md: profileOpen ? '300px auto' : '75px auto',
+        md: profileOpen ? '250px auto' : '75px auto',
       }}
     >
       <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>

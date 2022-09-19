@@ -37,6 +37,7 @@ const RythmAll = ({
                     type: 'realtime',
                     realtime: {
                       delay: 2000,
+                      refresh: 20,
                       onRefresh: (chart: ChartJS) => {
                         chart.data.datasets.forEach((dataset) => {
                           const next = {

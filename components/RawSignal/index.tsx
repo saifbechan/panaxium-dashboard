@@ -1,6 +1,7 @@
 import 'chartjs-adapter-luxon';
 import { BubbleDataPoint, ChartDataset, Chart as ChartJS, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import { Text } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
 import { selectedSignalState } from '../../lib/store';
 import { useAtom } from 'jotai';
@@ -18,10 +19,8 @@ const RawSignal = ({
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
   return (
-    <Section
-      border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
-      title={`#${signal}`}
-    >
+    <Section border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}>
+      <Text fontSize="xs">{signal}</Text>
       {useMemo(
         () => (
           <Chart
@@ -44,6 +43,7 @@ const RawSignal = ({
                   type: 'realtime',
                   realtime: {
                     delay: 2000,
+                    refresh: 20,
                     onRefresh: (chart: ChartJS) => {
                       chart.data.datasets.forEach((dataset, index) => {
                         const next = {

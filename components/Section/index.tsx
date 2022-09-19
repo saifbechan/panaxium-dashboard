@@ -8,7 +8,7 @@ const Section = ({
   children,
   ...props
 }: {
-  title: string;
+  title?: string;
   info?: string;
   children: ReactNode;
 } & ChakraProps) => {
@@ -25,18 +25,22 @@ const Section = ({
           </Box>
         ) : null}
 
-        <Heading
-          as="h4"
-          color="text.dimmed"
-          fontWeight="normal"
-          overflow="hidden"
-          padding="0 0 20px 0"
-          size="sm"
-          textOverflow="ellipsis"
-          whiteSpace="nowrap"
-        >
-          {title}
-        </Heading>
+        {title ? (
+          <Heading
+            as="h4"
+            color="text.dimmed"
+            fontWeight="normal"
+            overflow="hidden"
+            padding="0 0 20px 0"
+            size="sm"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+          >
+            {title}
+          </Heading>
+        ) : (
+          <></>
+        )}
         {children}
       </Box>
     </GridItem>
