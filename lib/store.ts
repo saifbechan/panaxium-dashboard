@@ -23,9 +23,16 @@ export const sectionTogglesState = atom<SectionToggleIds>({
   biomarker_detection: true,
 });
 
-export const signalsMinMaxState = atom<{ min: number; max: number }>(() => {
-  const minMax = { min: Infinity, max: -Infinity };
-  lfpSegment.map((signalValues) => {
+export const signalsMinMaxState = atom<{
+  all: { min: number; max: number }[];
+  sum: { min: number; max: number };
+}>(() => {
+  const minMaxAll: { min: number; max: number }[] = [];
+  const minMaxSum = { min: Infinity, max: -Infinity };
+
+  lfpSegment.map((signalValues, index) => {
+    const minMax = { min: Infinity, max: -Infinity };
+
     signalValues.map((signalValue) => {
       if (signalValue < minMax.min) {
         minMax.min = signalValue;
@@ -33,7 +40,17 @@ export const signalsMinMaxState = atom<{ min: number; max: number }>(() => {
       if (signalValue > minMax.max) {
         minMax.max = signalValue;
       }
+
+      if (signalValue < minMaxSum.min) {
+        minMaxSum.min = signalValue;
+      }
+      if (signalValue > minMaxSum.max) {
+        minMaxSum.max = signalValue;
+      }
     });
+
+    minMaxAll[index] = minMax;
   });
-  return minMax;
+
+  return { all: minMaxAll, sum: minMaxSum };
 });

@@ -5,7 +5,6 @@ const rawSignals: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPo
 ].map(() => ({
   borderColor: '#61586F',
   borderWidth: 2,
-  cubicInterpolationMode: 'monotone',
   data: [],
   pointRadius: 0,
 }));

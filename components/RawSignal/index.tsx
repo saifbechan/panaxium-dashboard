@@ -17,7 +17,7 @@ const RawSignal = ({
   lfpSegment: number[][];
 }) => {
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
-  const { min, max } = useAtomValue(signalsMinMaxState);
+  const minMaxAll = useAtomValue(signalsMinMaxState);
 
   const pointer = useRef(0);
 
@@ -46,7 +46,7 @@ const RawSignal = ({
               type: 'realtime',
               realtime: {
                 delay: 2000,
-                refresh: 20,
+                refresh: 500,
                 onRefresh: (chart: ChartJS) => {
                   chart.data.datasets.forEach((dataset) => {
                     const next = {
@@ -67,8 +67,8 @@ const RawSignal = ({
             },
             y: {
               display: false,
-              min,
-              max,
+              min: minMaxAll.all[signal - 1].min,
+              max: minMaxAll.all[signal - 1].max,
             },
           },
         }}

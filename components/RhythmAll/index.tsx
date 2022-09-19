@@ -15,8 +15,7 @@ const RhythmAll = ({
   datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
 }) => {
   const sectionToggles = useAtomValue(sectionTogglesState);
-  const { min, max } = useAtomValue(signalsMinMaxState);
-
+  const minMaxAll = useAtomValue(signalsMinMaxState);
   const pointer = useRef(0);
 
   return (
@@ -36,13 +35,17 @@ const RhythmAll = ({
                 display: false,
                 type: 'realtime',
                 realtime: {
+                  duration: 30000,
                   delay: 2000,
-                  refresh: 20,
+                  refresh: 200,
                   onRefresh: (chart: ChartJS) => {
                     chart.data.datasets.forEach((dataset, index) => {
                       const y = lfpSegment[index]
                         ? lfpSegment[index][pointer.current]
-                        : faker.datatype.float({ min, max });
+                        : faker.datatype.float({
+                            min: minMaxAll.all[index].min,
+                            max: minMaxAll.all[index].max,
+                          });
 
                       const next = {
                         x: Date.now(),
@@ -62,8 +65,8 @@ const RhythmAll = ({
               },
               y: {
                 display: false,
-                min,
-                max,
+                min: minMaxAll.sum.min,
+                max: minMaxAll.sum.max,
               },
             },
           }}
