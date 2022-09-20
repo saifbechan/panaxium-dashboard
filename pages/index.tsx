@@ -1,4 +1,5 @@
 import {
+  BarController,
   BarElement,
   CategoryScale,
   Chart,
@@ -24,6 +25,8 @@ import StreamingPlugin from 'chartjs-plugin-streaming';
 import type { NextPage } from 'next';
 
 Chart.register(
+  BarElement,
+  BarController,
   BarElement,
   CategoryScale,
   Filler,

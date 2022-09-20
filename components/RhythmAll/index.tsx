@@ -65,8 +65,6 @@ const RhythmAll = ({
               },
               y: {
                 display: false,
-                min: minMaxAll.sum.min,
-                max: minMaxAll.sum.max,
               },
             },
           }}
