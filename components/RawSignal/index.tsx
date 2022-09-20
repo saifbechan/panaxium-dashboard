@@ -45,6 +45,7 @@ const RawSignal = ({
               display: false,
               type: 'realtime',
               realtime: {
+                duration: 10000,
                 delay: 2000,
                 refresh: 500,
                 onRefresh: (chart: ChartJS) => {
@@ -56,7 +57,7 @@ const RawSignal = ({
                     dataset.data.push(next);
                   });
 
-                  if (pointer.current === 500) {
+                  if (pointer.current === 19) {
                     pointer.current = 0;
                     return;
                   }

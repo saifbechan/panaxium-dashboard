@@ -35,9 +35,9 @@ const RhythmAll = ({
                 display: false,
                 type: 'realtime',
                 realtime: {
-                  duration: 30000,
+                  duration: 10000,
                   delay: 2000,
-                  refresh: 200,
+                  refresh: 500,
                   onRefresh: (chart: ChartJS) => {
                     chart.data.datasets.forEach((dataset, index) => {
                       const y = lfpSegment[index]
@@ -54,7 +54,7 @@ const RhythmAll = ({
                       dataset.data.push(next);
                     });
 
-                    if (pointer.current === 500) {
+                    if (pointer.current === 19) {
                       pointer.current = 0;
                       return;
                     }
