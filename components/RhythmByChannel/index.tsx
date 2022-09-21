@@ -31,7 +31,7 @@ const RhythmByChannel = () => {
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset) => {
-      if (pointer.current < barplot[0].length) {
+      if (pointer.current < barplot[0].length - 1) {
         pointer.current += 1;
       } else {
         pointer.current = 0;
