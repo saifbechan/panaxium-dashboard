@@ -22,9 +22,8 @@ const RhythmAll = ({
   const minMaxAll = useAtomValue(signalsMinMaxState);
 
   const timerRef = useRef<NodeJS.Timer>();
-
-  const pointer = useRef(0);
-  const countRef = useRef(0);
+  const counterRef = useRef(0);
+  const avgRef = useRef(0);
 
   useEffect(() => {
     timerRef.current = setInterval(() => tick(), 500);
@@ -37,20 +36,24 @@ const RhythmAll = ({
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
-      if (pointer.current < lfpSegment[0].length - 1) {
-        pointer.current += 1;
+      if (counterRef.current < lfpSegment[0].length - 1) {
+        counterRef.current += 1;
       } else {
-        pointer.current = 0;
+        counterRef.current = 0;
       }
-      dataset.data.push({ x: 0, y: lfpSegment[index][pointer.current] });
+      if (typeof lfpSegment[index] !== 'undefined') {
+        dataset.data.push({ x: 0, y: lfpSegment[index][counterRef.current] });
+        avgRef.current += lfpSegment[index][counterRef.current];
+      } else {
+        dataset.data.push({ x: 0, y: avgRef.current / lfpSegment[index - 1].length });
+        avgRef.current = 0;
+      }
 
       dataset.data.map((value) => ({
         x: ((value as ScatterDataPoint).x -= 1),
         y: (value as ScatterDataPoint).y,
       }));
     });
-
-    countRef.current += 1;
 
     chartRef.current.update();
   };
