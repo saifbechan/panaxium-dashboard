@@ -2,7 +2,6 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { displaySignalsState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import dynamic from 'next/dynamic';
-import lfpSegment from '../data/lfp-segment';
 import rawSignals from '../lib/raw-signals';
 
 const RawSignalsNoSSR = dynamic(() => import('../components/RawSignal'), { ssr: false });
@@ -24,12 +23,7 @@ const RawSignals = () => {
         }}
       >
         {rawSignals.map((datasets, signal) => (
-          <RawSignalsNoSSR
-            key={signal + 1}
-            datasets={[datasets]}
-            lfpSegment={lfpSegment}
-            signal={signal + 1}
-          />
+          <RawSignalsNoSSR key={signal + 1} datasets={[datasets]} signal={signal + 1} />
         ))}
       </Grid>
     </GridItem>

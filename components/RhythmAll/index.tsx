@@ -25,6 +25,8 @@ const RhythmAll = ({
   const counterRef = useRef(0);
   const avgRef = useRef(0);
 
+  const MAX_LENGTH = 100;
+
   useEffect(() => {
     timerRef.current = setInterval(() => tick(), 500);
 
@@ -41,6 +43,12 @@ const RhythmAll = ({
       } else {
         counterRef.current = 0;
       }
+
+      dataset.data.map((value) => ({
+        x: ((value as ScatterDataPoint).x -= 1),
+        y: (value as ScatterDataPoint).y,
+      }));
+
       if (typeof lfpSegment[index] !== 'undefined') {
         dataset.data.push({ x: 0, y: lfpSegment[index][counterRef.current] });
         avgRef.current += lfpSegment[index][counterRef.current];
@@ -49,10 +57,9 @@ const RhythmAll = ({
         avgRef.current = 0;
       }
 
-      dataset.data.map((value) => ({
-        x: ((value as ScatterDataPoint).x -= 1),
-        y: (value as ScatterDataPoint).y,
-      }));
+      if (dataset.data.length === MAX_LENGTH) {
+        dataset.data.shift();
+      }
     });
 
     chartRef.current.update();
@@ -64,7 +71,7 @@ const RhythmAll = ({
         <Chart
           ref={chartRef}
           data={{
-            labels: Array.from(Array(100).keys())
+            labels: Array.from(Array(MAX_LENGTH).keys())
               .map((value) => value * -1)
               .reverse(),
             datasets,
