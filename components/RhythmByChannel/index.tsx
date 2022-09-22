@@ -77,9 +77,6 @@ const RhythmByChannel = () => {
                 datalabels: { display: false },
               },
               scales: {
-                x: {
-                  display: false,
-                },
                 y: {
                   display: false,
                 },
