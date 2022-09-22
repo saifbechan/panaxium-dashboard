@@ -7,6 +7,8 @@ export const displaySignalsState = atom(false);
 
 export const selectedSignalState = atom(1);
 
+export const ticksState = atom(0);
+
 export type SectionToggleIds = {
   rhythm_all: boolean;
   rhythm_band: boolean;
