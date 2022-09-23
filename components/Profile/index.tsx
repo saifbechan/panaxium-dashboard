@@ -3,7 +3,7 @@ import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
 import { useSetAtom } from 'jotai';
-import DeviceConfig from '../DeviceConfig';
+import DeviceConfigWithAction from '../DeviceConfigWithAction';
 import EEGToggle from '../EEGToggle';
 
 const Profile = () => {
@@ -35,7 +35,7 @@ const Profile = () => {
 
       <EEGToggle />
 
-      <DeviceConfig />
+      <DeviceConfigWithAction />
     </Box>
   );
 };

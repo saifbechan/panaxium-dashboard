@@ -1,4 +1,4 @@
-import { Box, ChakraProps, GridItem, Heading, Icon, Tooltip } from '@chakra-ui/react';
+import { Box, ChakraProps, GridItem, HStack, Icon, Text, Tooltip } from '@chakra-ui/react';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { ReactNode } from 'react';
 
@@ -21,32 +21,30 @@ const Section = ({
         padding="10px"
         {...props}
       >
-        {info ? (
-          <Box textAlign="right">
-            <Tooltip hasArrow label={info}>
-              <span>
-                <Icon as={BsQuestionCircle} color="text.dimmed" />
-              </span>
-            </Tooltip>
-          </Box>
-        ) : null}
+        <HStack justifyContent="space-between" justifyItems="center" mb={4}>
+          {title ? (
+            <Text
+              color="text.dimmed"
+              fontWeight="normal"
+              overflow="hidden"
+              size="sm"
+              textOverflow="ellipsis"
+              whiteSpace="nowrap"
+            >
+              {title}
+            </Text>
+          ) : (
+            <></>
+          )}
 
-        {title ? (
-          <Heading
-            as="h4"
-            color="text.dimmed"
-            fontWeight="normal"
-            overflow="hidden"
-            padding="0 0 20px 0"
-            size="sm"
-            textOverflow="ellipsis"
-            whiteSpace="nowrap"
-          >
-            {title}
-          </Heading>
-        ) : (
-          <></>
-        )}
+          {info ? (
+            <Tooltip hasArrow label={info}>
+              <div>
+                <Icon as={BsQuestionCircle} color="text.dimmed" />
+              </div>
+            </Tooltip>
+          ) : null}
+        </HStack>
         {children}
       </Box>
     </GridItem>
