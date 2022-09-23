@@ -13,8 +13,14 @@ const Section = ({
   children: ReactNode;
 } & ChakraProps) => {
   return (
-    <GridItem>
-      <Box backgroundColor="#29293B" border="1px solid #401D56" padding="10px" {...props}>
+    <GridItem height="100%">
+      <Box
+        backgroundColor="#29293B"
+        border="1px solid #401D56"
+        height="100%"
+        padding="10px"
+        {...props}
+      >
         {info ? (
           <Box textAlign="right">
             <Tooltip hasArrow label={info}>
