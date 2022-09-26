@@ -21,30 +21,36 @@ const Section = ({
         padding="10px"
         {...props}
       >
-        <HStack justifyContent="space-between" justifyItems="center" mb={4}>
-          {title ? (
-            <Text
-              color="text.dimmed"
-              fontWeight="normal"
-              overflow="hidden"
-              size="sm"
-              textOverflow="ellipsis"
-              whiteSpace="nowrap"
-            >
-              {title}
-            </Text>
-          ) : (
-            <></>
-          )}
+        {title || info ? (
+          <HStack justifyContent="space-between" justifyItems="center" mb={4}>
+            {title ? (
+              <Text
+                color="text.dimmed"
+                fontWeight="normal"
+                overflow="hidden"
+                size="sm"
+                textOverflow="ellipsis"
+                whiteSpace="nowrap"
+              >
+                {title}
+              </Text>
+            ) : (
+              <></>
+            )}
 
-          {info ? (
-            <Tooltip hasArrow label={info}>
-              <div>
-                <Icon as={BsQuestionCircle} color="text.dimmed" />
-              </div>
-            </Tooltip>
-          ) : null}
-        </HStack>
+            {info ? (
+              <Tooltip hasArrow label={info}>
+                <div>
+                  <Icon as={BsQuestionCircle} color="text.dimmed" />
+                </div>
+              </Tooltip>
+            ) : (
+              <></>
+            )}
+          </HStack>
+        ) : (
+          <></>
+        )}
         {children}
       </Box>
     </GridItem>
