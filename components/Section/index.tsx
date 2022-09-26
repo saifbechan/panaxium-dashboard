@@ -37,7 +37,6 @@ const Section = ({
             ) : (
               <></>
             )}
-
             {info ? (
               <Tooltip hasArrow label={info}>
                 <div>
