@@ -25,7 +25,7 @@
     "chartjs-plugin-datalabels": "^2.1.0",
     "chartjs-plugin-streaming": "^2.0.0",
     "chartjs-plugin-zoom": "^1.2.1",
-    "framer-motion": "^7.3.6",
+    "framer-motion": "^7.4.0",
     "jotai": "^1.8.4",
     "luxon": "^3.0.4",
     "next": "12.2.5",
