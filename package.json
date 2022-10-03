@@ -57,7 +57,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
-    "jsdom": "^20.0.0",
+    "jsdom": "^20.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "resize-observer-polyfill": "^1.5.1",
