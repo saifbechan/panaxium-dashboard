@@ -70,6 +70,7 @@ const RhythmByChannel = () => {
               ],
             }}
             options={{
+              aspectRatio: 2.5,
               plugins: {
                 legend: {
                   display: false,

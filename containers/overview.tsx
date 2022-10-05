@@ -23,7 +23,6 @@ const Overview = () => {
 
       <Grid
         gap={GAP}
-        gridAutoRows="1fr"
         templateColumns={{
           base: '1fr',
           md: 'repeat(4, minmax(0, 1fr))',
