@@ -9,6 +9,8 @@ export const selectedSignalState = atom(1);
 
 export const ticksState = atom(0);
 
+export const deviceConfigIndexState = atom<[]>([]);
+
 export type SectionToggleIds = {
   rhythm_all: boolean;
   rhythm_band: boolean;

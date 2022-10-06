@@ -1,22 +1,19 @@
 import { Box, ChakraProps, HStack, Tooltip, VStack } from '@chakra-ui/react';
 import { selectedSignalState } from '../../lib/store';
 import { useAtom } from 'jotai';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 let count = 0;
 
 const Dot = (props: ChakraProps) => {
   const countRef = useRef(0);
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
-  const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     if (countRef.current !== 0) return;
 
     count += 1;
     countRef.current = count;
-
-    setRerender(!rerender);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
