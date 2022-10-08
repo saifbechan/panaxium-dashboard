@@ -14,5 +14,5 @@ test('Home', () => {
     </Layout>
   );
   const main = within(screen.getByRole('main'));
-  expect(main.getByRole('heading', { level: 1, name: /Saif Bechan/i })).toBeDefined();
+  expect(main.getByRole('heading', { level: 1, name: /Name: John Doe/i })).toBeDefined();
 });

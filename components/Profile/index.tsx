@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Spacer } from '@chakra-ui/react';
+import { Box, Grid, Spacer, Text } from '@chakra-ui/react';
 import { BsGearFill, BsThreeDotsVertical, BsXLg } from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { profileOpenState } from '../../lib/store';
@@ -29,9 +29,12 @@ const Profile = () => {
         </Box>
       </Grid>
 
-      <Heading as="h1" mb={10} mt={10} size="md">
-        Saif Bechan
-      </Heading>
+      <Text as="h1" fontSize="xl" fontWeight="bold" mt={10}>
+        Name: John Doe
+      </Text>
+      <Text fontSize="md" mb={10}>
+        Patient #: 86530B
+      </Text>
 
       <EEGToggle />
 
