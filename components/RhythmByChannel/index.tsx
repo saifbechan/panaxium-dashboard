@@ -1,7 +1,7 @@
+import { Box, Collapse, Select, Spacer } from '@chakra-ui/react';
 import { BubbleDataPoint, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
-import { Collapse, Select, Spacer } from '@chakra-ui/react';
 import { sectionTogglesState, ticksState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
@@ -54,36 +54,51 @@ const RhythmByChannel = () => {
             ))}
           </Select>
 
-          <Spacer h={10} />
+          <Spacer h={5} />
 
-          <Chart
-            ref={chartRef}
-            data={{
-              labels,
-              datasets: [
-                {
-                  data: [...barplot.map((values) => values[0])],
-                  backgroundColor: ['#61586F', '#59486A', '#4F3A64', '#472B5E', '#401D56'],
+          <Box margin="0 -10px -10px -10px">
+            <Chart
+              ref={chartRef}
+              data={{
+                labels,
+                datasets: [
+                  {
+                    data: [...barplot.map((values) => values[0])],
+                    backgroundColor: ['#61586F', '#59486A', '#4F3A64', '#472B5E', '#401D56'],
+                  },
+                ],
+              }}
+              options={{
+                aspectRatio: 2.5,
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                  datalabels: { display: false },
                 },
-              ],
-            }}
-            options={{
-              aspectRatio: 2.5,
-              plugins: {
-                legend: {
-                  display: false,
+                layout: {
+                  padding: 0,
                 },
-                datalabels: { display: false },
-              },
-              scales: {
-                y: {
-                  min: 0,
-                  max: 30,
+                scales: {
+                  y: {
+                    title: {
+                      text: 'dB',
+                      display: true,
+                    },
+                    min: 0,
+                    max: 30,
+                  },
+                  x: {
+                    title: {
+                      text: 'Frequency band',
+                      display: true,
+                    },
+                  },
                 },
-              },
-            }}
-            type="bar"
-          />
+              }}
+              type="bar"
+            />
+          </Box>
         </Section>
       </Collapse>
     ),
