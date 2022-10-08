@@ -32,7 +32,7 @@ const SectionToggles = () => {
   return (
     <Box backgroundColor="#29293B" mb={4} padding="10px" w="100%">
       <FormControl alignItems="center" display="flex">
-        <Toggle id="rhythm_all" label="Rhythm (all)" />
+        <Toggle id="rhythm_all" label="All Signals" />
         <Toggle id="rhythm_channel" label="Rhythm (channel)" />
         <Toggle id="rhythm_band" label="Rhythm (band)" />
         <Toggle id="connectivity" label="Connectivity" />

@@ -10,7 +10,16 @@ const RhythmByBand = () => {
   return (
     <Collapse animateOpacity in={sectionToggles['rhythm_band']}>
       <Section border="1px solid #401D56" info="Some extra information" title="Rhythm by band">
-        <Select borderColor="gray.400" color="gray.400" size="xs">
+        <Select
+          backgroundColor="#401D56"
+          border="1px solid gray"
+          borderRadius={2}
+          fontWeight="normal"
+          margin="0 auto"
+          maxW="90%"
+          size="xs"
+          variant="outlined"
+        >
           {['Delta', 'Theta', 'Alpha', 'Beta', 'Gamma'].map((item, index) => (
             <option key={index}>{item}</option>
           ))}

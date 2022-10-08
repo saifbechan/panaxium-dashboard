@@ -10,7 +10,16 @@ const BiomarkerDetection = () => {
   return (
     <Collapse animateOpacity in={sectionToggles['biomarker_detection']}>
       <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
-        <Select borderColor="gray.400" color="gray.400" size="xs">
+        <Select
+          backgroundColor="#401D56"
+          border="1px solid gray"
+          borderRadius={2}
+          fontWeight="normal"
+          margin="0 auto"
+          maxW="90%"
+          size="xs"
+          variant="outlined"
+        >
           {['HFO'].map((item, index) => (
             <option key={index}>{item}</option>
           ))}

@@ -48,7 +48,14 @@ const RhythmByChannel = () => {
         style={{ gridColumn: 'span 2' }}
       >
         <Section border="1px solid #401D56" info="Some extra information" title="Rhythm by channel">
-          <Select borderColor="gray.400" color="gray.400" size="xs">
+          <Select
+            backgroundColor="#401D56"
+            border="1px solid gray"
+            borderRadius={2}
+            fontWeight="normal"
+            size="xs"
+            variant="outlined"
+          >
             {['HFO'].map((_item, index) => (
               <option key={index}>Channel {index + 1}</option>
             ))}

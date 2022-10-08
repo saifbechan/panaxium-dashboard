@@ -25,7 +25,7 @@ const Section = ({
           <HStack justifyContent="space-between" justifyItems="center" mb={4}>
             {title ? (
               <Text
-                color="text.dimmed"
+                color="gray.300"
                 fontWeight="normal"
                 overflow="hidden"
                 size="sm"

@@ -62,7 +62,7 @@ const RhythmAll = ({
   return useMemo(
     () => (
       <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 2' }}>
-        <Section border="1px solid #401D56" info="Some extra information" title="Rhythm (all)">
+        <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
           <Chart
             ref={chartRef}
             data={{
