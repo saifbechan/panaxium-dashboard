@@ -1,4 +1,4 @@
-import { Box, ChakraProps, HStack, Tooltip, VStack } from '@chakra-ui/react';
+import { Box, ChakraProps, Grid, HStack, Tooltip, VStack } from '@chakra-ui/react';
 import { selectedSignalState } from '../../lib/store';
 import { useAtom } from 'jotai';
 import { useEffect, useRef } from 'react';
@@ -68,7 +68,7 @@ const FiveDots = () => (
       <Dot />
       <Dot />
     </HStack>
-    <Dot left={3} position="absolute" top={1} />
+    <Dot left={5} position="absolute" top={1} />
     <HStack spacing={2}>
       <Dot />
       <Dot />
@@ -78,56 +78,40 @@ const FiveDots = () => (
 
 const DeviceConfigWithAction = () => {
   return (
-    <VStack spacing={4}>
-      <HStack justifyContent="space-around" width="100%">
-        <FiveDots />
-        <FourDots />
-        <FourDots />
-        <FiveDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <FourDots />
-        <FourDots />
-        <FourDots />
-        <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
-        <ThreeDots />
-        <FourDots />
-        <FourDots />
-        <ThreeDots />
-      </HStack>
-    </VStack>
+    <Grid columnGap={0} gridTemplateColumns="repeat(4, 1fr)" rowGap={5}>
+      <FiveDots />
+      <FourDots />
+      <FourDots />
+      <FiveDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <FourDots />
+      <ThreeDots />
+      <FourDots />
+      <FourDots />
+      <ThreeDots />
+    </Grid>
   );
 };
 

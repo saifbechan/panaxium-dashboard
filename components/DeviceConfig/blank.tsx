@@ -54,12 +54,7 @@ const FiveDots = () => (
 const DeviceConfigReset = () => {
   return (
     <HStack alignItems="flex-start" justifyContent="center" spacing={10}>
-      <Grid
-        gridColumnGap={5}
-        gridRowGap={2}
-        gridTemplateColumns="repeat(4, 1fr)"
-        gridTemplateRows="repeat(8, 1fr)"
-      >
+      <Grid gap={4} gridTemplateColumns="repeat(4, 1fr)">
         <FiveDots />
         <FourDots />
         <FourDots />

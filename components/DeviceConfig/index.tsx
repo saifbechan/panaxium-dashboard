@@ -82,12 +82,7 @@ const DeviceConfig = ({
   );
   return (
     <HStack alignItems="flex-start" justifyContent="center" spacing={10}>
-      <Grid
-        gridColumnGap={5}
-        gridRowGap={2}
-        gridTemplateColumns="repeat(4, 1fr)"
-        gridTemplateRows="repeat(8, 1fr)"
-      >
+      <Grid gap={4} gridTemplateColumns="repeat(4, 1fr)">
         <FiveDots indexes={[0, 1, 2, 3, 4]} />
         <FourDots indexes={[5, 6, 7, 8]} />
         <FourDots indexes={[9, 10, 11, 12]} />
