@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import lfpSegment from '../data/lfp-segment';
+import lfpSignals from '../data/lfp-signals-500';
 
 export const profileOpenState = atom(true);
 
@@ -34,7 +34,7 @@ export const signalsMinMaxState = atom<{
   const minMaxAll: { min: number; max: number }[] = [];
   const minMaxSum = { min: Infinity, max: -Infinity };
 
-  lfpSegment.map((signalValues, index) => {
+  lfpSignals.map((signalValues, index) => {
     const minMax = { min: Infinity, max: -Infinity };
 
     signalValues.map((signalValue) => {

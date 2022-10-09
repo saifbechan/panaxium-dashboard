@@ -7,7 +7,7 @@ import { sectionTogglesState, signalsMinMaxState, ticksState } from '../../lib/s
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
-import lfpSegment from '../../data/lfp-segment';
+import lfpSignals from '../../data/lfp-signals-500';
 
 const RhythmAll = ({
   datasets,
@@ -32,7 +32,7 @@ const RhythmAll = ({
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
-      if (counterRef.current < lfpSegment[0].length - 1) {
+      if (counterRef.current < lfpSignals[0].length - 1) {
         counterRef.current += 1;
       } else {
         counterRef.current = 0;
@@ -43,11 +43,11 @@ const RhythmAll = ({
         y: (value as ScatterDataPoint).y,
       }));
 
-      if (typeof lfpSegment[index] !== 'undefined') {
-        dataset.data.push({ x: 0, y: lfpSegment[index][counterRef.current] });
-        avgRef.current += lfpSegment[index][counterRef.current];
+      if (typeof lfpSignals[index] !== 'undefined') {
+        dataset.data.push({ x: 0, y: lfpSignals[index][counterRef.current] });
+        avgRef.current += lfpSignals[index][counterRef.current];
       } else {
-        dataset.data.push({ x: 0, y: avgRef.current / lfpSegment[index - 1].length });
+        dataset.data.push({ x: 0, y: avgRef.current / lfpSignals[index - 1].length });
         avgRef.current = 0;
       }
 

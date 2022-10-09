@@ -7,7 +7,7 @@ import { selectedSignalState, signalsMinMaxState, ticksState } from '../../lib/s
 import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
-import lfpSegment from '../../data/lfp-segment';
+import lfpSignals from '../../data/lfp-signals-500';
 
 const RawSignal = ({
   datasets,
@@ -33,7 +33,7 @@ const RawSignal = ({
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
-      if (counterRef.current < lfpSegment[0].length - 1) {
+      if (counterRef.current < lfpSignals[0].length - 1) {
         counterRef.current += 1;
       } else {
         counterRef.current = 0;
@@ -47,7 +47,7 @@ const RawSignal = ({
         x: ((value as ScatterDataPoint).x -= 1),
         y: (value as ScatterDataPoint).y,
       }));
-      dataset.data.push({ x: 0, y: lfpSegment[index][counterRef.current] });
+      dataset.data.push({ x: 0, y: lfpSignals[index][counterRef.current] });
     });
 
     chartRef.current.update();
