@@ -3,6 +3,7 @@ import { sectionTogglesState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import DeviceConfig from '../DeviceConfig';
 import Section from '../Section';
+import dataBand from '../../data/data-band';
 
 const RhythmByBand = () => {
   const sectionToggles = useAtomValue(sectionTogglesState);
@@ -27,7 +28,7 @@ const RhythmByBand = () => {
 
         <Spacer h={5} />
 
-        <DeviceConfig />
+        <DeviceConfig dataset={dataBand} />
       </Section>
     </Collapse>
   );

@@ -1,71 +1,85 @@
 import { Box, ChakraProps, Grid, HStack, VStack } from '@chakra-ui/react';
+import { ticksState } from '../../lib/store';
+import { useAtomValue } from 'jotai';
+import { useEffect, useRef } from 'react';
 import ColorScale from '../ColorScale';
 import heatMapColorforValue from '../../lib/heatmap-colors';
-import heatmap from '../../data/heatmap';
 
-const Dot = ({
-  index,
-  highlight = false,
-  ...props
-}: { index: number; highlight?: boolean } & ChakraProps) => {
-  return (
-    <Box
-      backgroundColor={heatMapColorforValue(heatmap[index][1])}
-      borderRadius="50%"
-      boxSize={2}
-      fontSize={10}
-      textAlign="center"
-      {...props}
-      lineHeight={4}
-      outline={highlight ? '2px solid red' : 'none'}
-      outlineOffset="1px"
-      transition="1s all"
-    />
-  );
-};
-
-const ThreeDots = ({ indexes }: { indexes: [number, number, number] }) => (
-  <VStack spacing={1}>
-    <Dot index={indexes[0]} />
-    <Dot index={indexes[1]} />
-    <Dot index={indexes[2]} />
-  </VStack>
-);
-
-const FourDots = ({
-  indexes,
+const DeviceConfig = ({
+  dataset,
   highlight = false,
 }: {
-  indexes: [number, number, number, number];
+  dataset: number[][][];
   highlight?: boolean;
-}) => (
-  <VStack spacing={2}>
-    <HStack spacing={2}>
-      <Dot index={indexes[0]} />
-      <Dot highlight={highlight} index={indexes[1]} />
-    </HStack>
-    <HStack spacing={2}>
-      <Dot index={indexes[2]} />
-      <Dot index={indexes[3]} />
-    </HStack>
-  </VStack>
-);
+}) => {
+  const Dot = ({
+    index,
+    highlight = false,
+    ...props
+  }: { index: number; highlight?: boolean } & ChakraProps) => {
+    const ticks = useAtomValue(ticksState);
+    const ticksRef = useRef(0);
 
-const FiveDots = ({ indexes }: { indexes: [number, number, number, number, number] }) => (
-  <VStack position="relative" spacing={2}>
-    <HStack spacing={2}>
+    useEffect(() => {
+      ticksRef.current = ticksRef.current < 19 ? ticksRef.current + 1 : 0;
+    }, [ticks]);
+
+    return (
+      <Box
+        backgroundColor={heatMapColorforValue(dataset[ticksRef.current][index][1])}
+        borderRadius="50%"
+        boxSize={2}
+        fontSize={10}
+        textAlign="center"
+        {...props}
+        lineHeight={4}
+        outline={highlight ? '2px solid red' : 'none'}
+        outlineOffset="1px"
+        transition="1s all"
+      />
+    );
+  };
+
+  const ThreeDots = ({ indexes }: { indexes: [number, number, number] }) => (
+    <VStack spacing={1}>
       <Dot index={indexes[0]} />
       <Dot index={indexes[1]} />
-    </HStack>
-    <Dot index={indexes[2]} left={2} position="absolute" />
-    <HStack spacing={2}>
-      <Dot index={indexes[3]} />
-      <Dot index={indexes[4]} />
-    </HStack>
-  </VStack>
-);
+      <Dot index={indexes[2]} />
+    </VStack>
+  );
 
-const DeviceConfig = ({ highlight = false }: { highlight?: boolean }) => {
+  const FourDots = ({
+    indexes,
+    highlight = false,
+  }: {
+    indexes: [number, number, number, number];
+    highlight?: boolean;
+  }) => (
+    <VStack spacing={2}>
+      <HStack spacing={2}>
+        <Dot index={indexes[0]} />
+        <Dot highlight={highlight} index={indexes[1]} />
+      </HStack>
+      <HStack spacing={2}>
+        <Dot index={indexes[2]} />
+        <Dot index={indexes[3]} />
+      </HStack>
+    </VStack>
+  );
+
+  const FiveDots = ({ indexes }: { indexes: [number, number, number, number, number] }) => (
+    <VStack position="relative" spacing={2}>
+      <HStack spacing={2}>
+        <Dot index={indexes[0]} />
+        <Dot index={indexes[1]} />
+      </HStack>
+      <Dot index={indexes[2]} left={2} position="absolute" />
+      <HStack spacing={2}>
+        <Dot index={indexes[3]} />
+        <Dot index={indexes[4]} />
+      </HStack>
+    </VStack>
+  );
   return (
     <HStack alignItems="flex-start" justifyContent="center" spacing={10}>
       <Grid
@@ -107,7 +121,6 @@ const DeviceConfig = ({ highlight = false }: { highlight?: boolean }) => {
         <FourDots indexes={[121, 122, 123, 124]} />
         <ThreeDots indexes={[125, 126, 127]} />
       </Grid>
-
       <ColorScale />
     </HStack>
   );

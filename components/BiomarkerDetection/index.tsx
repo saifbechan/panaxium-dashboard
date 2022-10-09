@@ -3,6 +3,7 @@ import { sectionTogglesState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import DeviceConfig from '../DeviceConfig';
 import Section from '../Section';
+import dataSignals from '../../data/data-signals';
 
 const BiomarkerDetection = () => {
   const sectionToggles = useAtomValue(sectionTogglesState);
@@ -31,7 +32,7 @@ const BiomarkerDetection = () => {
 
         <Spacer h={5} />
 
-        <DeviceConfig />
+        <DeviceConfig dataset={dataSignals} />
       </Section>
     </Collapse>
   );

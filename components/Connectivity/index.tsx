@@ -5,6 +5,7 @@ import { useState } from 'react';
 import DeviceConfig from '../DeviceConfig';
 import DeviceConfigReset from '../DeviceConfig/blank';
 import Section from '../Section';
+import dataConnectivity from '../../data/data-connectivity';
 
 const Connectivity = () => {
   const [reset, setReset] = useState(false);
@@ -42,7 +43,7 @@ const Connectivity = () => {
 
         <Spacer h={5} />
 
-        {reset ? <DeviceConfigReset /> : <DeviceConfig highlight />}
+        {reset ? <DeviceConfigReset /> : <DeviceConfig dataset={dataConnectivity} highlight />}
       </Section>
     </Collapse>
   );
