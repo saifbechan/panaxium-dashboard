@@ -2,7 +2,11 @@ import { Box, ChakraProps, HStack, VStack } from '@chakra-ui/react';
 import heatMapColorforValue from '../../lib/heatmap-colors';
 import heatmap from '../../data/heatmap';
 
-const Dot = ({ index, ...props }: { index: number } & ChakraProps) => {
+const Dot = ({
+  index,
+  highlight = false,
+  ...props
+}: { index: number; highlight?: boolean } & ChakraProps) => {
   return (
     <Box
       backgroundColor={heatMapColorforValue(heatmap[index][1])}
@@ -12,6 +16,8 @@ const Dot = ({ index, ...props }: { index: number } & ChakraProps) => {
       textAlign="center"
       {...props}
       lineHeight={4}
+      outline={highlight ? '2px solid red' : 'none'}
+      outlineOffset="1px"
       transition="1s all"
     />
   );
@@ -25,11 +31,17 @@ const ThreeDots = ({ indexes }: { indexes: [number, number, number] }) => (
   </VStack>
 );
 
-const FourDots = ({ indexes }: { indexes: [number, number, number, number] }) => (
+const FourDots = ({
+  indexes,
+  highlight = false,
+}: {
+  indexes: [number, number, number, number];
+  highlight?: boolean;
+}) => (
   <VStack spacing={2}>
     <HStack spacing={2}>
       <Dot index={indexes[0]} />
-      <Dot index={indexes[1]} />
+      <Dot highlight={highlight} index={indexes[1]} />
     </HStack>
     <HStack spacing={2}>
       <Dot index={indexes[2]} />
@@ -52,7 +64,7 @@ const FiveDots = ({ indexes }: { indexes: [number, number, number, number, numbe
   </VStack>
 );
 
-const DeviceConfig = () => {
+const DeviceConfig = ({ highlight = false }: { highlight?: boolean }) => {
   return (
     <VStack spacing={4}>
       <HStack justifyContent="space-around" width="100%">
@@ -81,7 +93,7 @@ const DeviceConfig = () => {
       </HStack>
       <HStack justifyContent="space-around" width="100%">
         <FourDots indexes={[66, 67, 68, 69]} />
-        <FourDots indexes={[70, 71, 72, 73]} />
+        <FourDots highlight={highlight} indexes={[70, 71, 72, 73]} />
         <FourDots indexes={[74, 75, 76, 77]} />
         <FourDots indexes={[78, 79, 80, 81]} />
       </HStack>

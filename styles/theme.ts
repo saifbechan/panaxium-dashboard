@@ -24,14 +24,6 @@ const theme = extendTheme({
         margin: 0,
         padding: '10px 5px 0 0',
       },
-      a: {
-        textDecoration: 'none',
-        transition: 'all 0.2s ease-in-out',
-      },
-      'a:hover': {
-        textShadow: '0 0 10px deeppink',
-        color: 'burlywood',
-      },
       '::-webkit-scrollbar': {
         width: '10px',
       },
