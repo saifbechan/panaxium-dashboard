@@ -30,8 +30,6 @@ const RawSignal = ({
   const MAX_LENGTH = 20;
 
   useEffect(() => {
-    if (ticks % 2 !== 0) return;
-
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
