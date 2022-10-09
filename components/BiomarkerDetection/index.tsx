@@ -8,7 +8,11 @@ const BiomarkerDetection = () => {
   const sectionToggles = useAtomValue(sectionTogglesState);
 
   return (
-    <Collapse animateOpacity in={sectionToggles['biomarker_detection']}>
+    <Collapse
+      animateOpacity
+      in={sectionToggles['biomarker_detection']}
+      style={{ gridColumn: 'span 4' }}
+    >
       <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
         <Select
           backgroundColor="#401D56"

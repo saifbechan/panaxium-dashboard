@@ -25,7 +25,7 @@ const Overview = () => {
         gap={GAP}
         templateColumns={{
           base: '1fr',
-          md: 'repeat(4, minmax(0, 1fr))',
+          md: 'repeat(12, minmax(0, 1fr))',
         }}
       >
         <RhythmAllNoSSR datasets={rawSignalsExtra} />

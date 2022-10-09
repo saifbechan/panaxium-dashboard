@@ -1,8 +1,8 @@
 import 'chartjs-adapter-luxon';
+import { Box, Collapse } from '@chakra-ui/react';
 import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
-import { Collapse } from '@chakra-ui/react';
 import { sectionTogglesState, signalsMinMaxState, ticksState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
@@ -61,36 +61,41 @@ const RhythmAll = ({
 
   return useMemo(
     () => (
-      <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 2' }}>
+      <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 6' }}>
         <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
-          <Chart
-            ref={chartRef}
-            data={{
-              labels: Array.from(Array(MAX_LENGTH).keys())
-                .map((value) => value * -1)
-                .reverse(),
-              datasets,
-            }}
-            options={{
-              plugins: {
-                legend: { display: false },
-                datalabels: { display: false },
-              },
-              scales: {
-                x: {
-                  display: false,
-                  min: -59,
-                  max: 0,
+          <Box margin="0 -5px 0 -5px">
+            <Chart
+              ref={chartRef}
+              data={{
+                labels: Array.from(Array(MAX_LENGTH).keys())
+                  .map((value) => value * -1)
+                  .reverse(),
+                datasets,
+              }}
+              options={{
+                plugins: {
+                  legend: { display: false },
+                  datalabels: { display: false },
                 },
-                y: {
-                  display: false,
-                  min: minMaxAll.sum.min,
-                  max: minMaxAll.sum.max,
+                layout: {
+                  padding: 0,
                 },
-              },
-            }}
-            type="line"
-          />
+                scales: {
+                  x: {
+                    display: false,
+                    min: -59,
+                    max: 0,
+                  },
+                  y: {
+                    display: false,
+                    min: minMaxAll.sum.min,
+                    max: minMaxAll.sum.max,
+                  },
+                },
+              }}
+              type="line"
+            />
+          </Box>
         </Section>
       </Collapse>
     ),

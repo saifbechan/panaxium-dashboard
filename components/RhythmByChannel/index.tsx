@@ -45,7 +45,7 @@ const RhythmByChannel = () => {
       <Collapse
         animateOpacity
         in={sectionToggles['rhythm_channel']}
-        style={{ gridColumn: 'span 2' }}
+        style={{ gridColumn: 'span 6' }}
       >
         <Section border="1px solid #401D56" info="Some extra information" title="Rhythm by channel">
           <Select
@@ -63,7 +63,7 @@ const RhythmByChannel = () => {
 
           <Spacer h={5} />
 
-          <Box margin="0 -10px -10px -10px">
+          <Box margin="0 0 -10px -10px">
             <Chart
               ref={chartRef}
               data={{
@@ -81,7 +81,7 @@ const RhythmByChannel = () => {
                   legend: {
                     display: false,
                   },
-                  datalabels: { display: false },
+                  datalabels: { color: 'silver' },
                 },
                 layout: {
                   padding: 0,

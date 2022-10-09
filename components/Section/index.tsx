@@ -18,7 +18,7 @@ const Section = ({
         backgroundColor="#29293B"
         border="1px solid #401D56"
         height="100%"
-        padding="10px"
+        padding={2}
         {...props}
       >
         {title || info ? (
