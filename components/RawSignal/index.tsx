@@ -59,7 +59,8 @@ const RawSignal = ({
   return useMemo(
     () => (
       <Section
-        border={`1px solid ${signal === selectedSignal ? '#61586F' : '#401D56'}`}
+        border={`1px solid ${signal === selectedSignal ? '#11a16a' : '#401D56'}`}
+        outline={`2px solid ${signal === selectedSignal ? '#11a16a' : '#19172C'}`}
         padding={1}
       >
         <Text fontSize="xs" mb={1}>
@@ -89,8 +90,8 @@ const RawSignal = ({
               },
               y: {
                 display: false,
-                min: minmax500.all[signal - 1].min - 10,
-                max: minmax500.all[signal - 1].max + 10,
+                min: minmax500.all[signal - 1].min,
+                max: minmax500.all[signal - 1].max,
               },
             },
           }}
