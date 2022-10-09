@@ -3,11 +3,12 @@ import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
 import { Text } from '@chakra-ui/react';
-import { selectedSignalState, signalsMinMaxState, ticksState } from '../../lib/store';
+import { selectedSignalState, ticksState } from '../../lib/store';
 import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals from '../../data/lfp-signals-500';
+import minmax500 from '../../lib/min-max-500';
 
 const RawSignal = ({
   datasets,
@@ -22,7 +23,6 @@ const RawSignal = ({
     useRef<
       ChartJSOrUndefined<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[], unknown>
     >();
-  const minMaxAll = useAtomValue(signalsMinMaxState);
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
   const counterRef = useRef(0);
@@ -87,8 +87,8 @@ const RawSignal = ({
               },
               y: {
                 display: false,
-                min: minMaxAll.all[signal - 1].min - 10,
-                max: minMaxAll.all[signal - 1].max + 10,
+                min: minmax500.all[signal - 1].min - 10,
+                max: minmax500.all[signal - 1].max + 10,
               },
             },
           }}

@@ -3,11 +3,12 @@ import { Box, Collapse } from '@chakra-ui/react';
 import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
-import { sectionTogglesState, signalsMinMaxState, ticksState } from '../../lib/store';
+import { sectionTogglesState, ticksState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals from '../../data/lfp-signals-500';
+import minmax500 from '../../lib/min-max-500';
 
 const RhythmAll = ({
   datasets,
@@ -21,7 +22,6 @@ const RhythmAll = ({
       ChartJSOrUndefined<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[], unknown>
     >();
   const sectionToggles = useAtomValue(sectionTogglesState);
-  const minMaxAll = useAtomValue(signalsMinMaxState);
 
   const counterRef = useRef(0);
   const avgRef = useRef(0);
@@ -88,8 +88,8 @@ const RhythmAll = ({
                   },
                   y: {
                     display: false,
-                    min: minMaxAll.sum.min,
-                    max: minMaxAll.sum.max,
+                    min: minmax500.sum.min,
+                    max: minmax500.sum.max,
                   },
                 },
               }}
