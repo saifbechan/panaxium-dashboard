@@ -21,7 +21,6 @@ import Handle from '../components/Profile/handle';
 import Overview from '../containers/overview';
 import Profile from '../components/Profile';
 import RawSignals from '../containers/raw-signals';
-import StreamingPlugin from 'chartjs-plugin-streaming';
 import type { NextPage } from 'next';
 
 Chart.register(
@@ -37,8 +36,7 @@ Chart.register(
   PointElement,
   Title,
   Tooltip,
-  ChartDataLabels,
-  StreamingPlugin
+  ChartDataLabels
 );
 
 const Home: NextPage = () => {

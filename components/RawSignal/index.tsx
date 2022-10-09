@@ -1,4 +1,3 @@
-import 'chartjs-adapter-luxon';
 import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
@@ -73,6 +72,9 @@ const RawSignal = ({
             datasets,
           }}
           options={{
+            animation: {
+              duration: 0,
+            },
             aspectRatio: 0.75,
             events: ['click'],
             onClick: () => {

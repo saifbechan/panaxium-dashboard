@@ -1,4 +1,3 @@
-import 'chartjs-adapter-luxon';
 import { Box, Collapse } from '@chakra-ui/react';
 import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
@@ -73,6 +72,9 @@ const RhythmAll = ({
                 datasets,
               }}
               options={{
+                animation: {
+                  duration: 0,
+                },
                 plugins: {
                   legend: { display: false },
                   datalabels: { display: false },
