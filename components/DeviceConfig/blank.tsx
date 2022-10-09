@@ -1,4 +1,5 @@
-import { Box, ChakraProps, HStack, VStack } from '@chakra-ui/react';
+import { Box, ChakraProps, Grid, HStack, VStack } from '@chakra-ui/react';
+import ColorScale from '../ColorScale';
 
 const Dot = (props: ChakraProps) => {
   return (
@@ -52,56 +53,49 @@ const FiveDots = () => (
 
 const DeviceConfigReset = () => {
   return (
-    <VStack spacing={4}>
-      <HStack justifyContent="space-around" width="100%">
+    <HStack alignItems="flex-start" justifyContent="center" spacing={10}>
+      <Grid
+        gridColumnGap={5}
+        gridRowGap={2}
+        gridTemplateColumns="repeat(4, 1fr)"
+        gridTemplateRows="repeat(8, 1fr)"
+      >
         <FiveDots />
         <FourDots />
         <FourDots />
         <FiveDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <FourDots />
         <FourDots />
         <FourDots />
         <FourDots />
-      </HStack>
-      <HStack justifyContent="space-around" width="100%">
         <ThreeDots />
         <FourDots />
         <FourDots />
         <ThreeDots />
-      </HStack>
-    </VStack>
+      </Grid>
+
+      <ColorScale />
+    </HStack>
   );
 };
 
