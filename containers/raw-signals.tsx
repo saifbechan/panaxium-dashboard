@@ -2,7 +2,6 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { displaySignalsState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import RawSignal from '../components/RawSignal';
-import rawSignals from '../lib/raw-signals';
 
 const RawSignals = () => {
   const displaySignals = useAtomValue(displaySignalsState);
@@ -20,8 +19,8 @@ const RawSignals = () => {
           md: 'repeat(8, minmax(0, 1fr))',
         }}
       >
-        {rawSignals.map((datasets, signal) => (
-          <RawSignal key={signal + 1} datasets={[datasets]} signal={signal + 1} />
+        {[...new Array(128)].map((_, signal) => (
+          <RawSignal key={signal + 1} signal={signal + 1} />
         ))}
       </Grid>
     </GridItem>

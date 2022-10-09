@@ -1,41 +1,30 @@
-import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
+import { ScatterDataPoint } from 'chart.js';
 import { Text } from '@chakra-ui/react';
 import { selectedSignalState, ticksState } from '../../lib/store';
 import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals from '../../data/lfp-signals-250';
-import minmax500 from '../../lib/min-max-250';
+import minmax from '../../lib/min-max-250';
 
-const RawSignal = ({
-  datasets,
-  signal,
-}: {
-  datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
-  signal: number;
-}) => {
+const RawSignal = ({ signal }: { signal: number }) => {
   const ticks = useAtomValue(ticksState);
-
-  const chartRef =
-    useRef<
-      ChartJSOrUndefined<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[], unknown>
-    >();
+  const counterRef = useRef(0);
+  const chartRef = useRef<ChartJSOrUndefined<'line', ScatterDataPoint[], unknown>>();
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
 
-  const counterRef = useRef(0);
-
-  const MAX_LENGTH = 20;
+  const MAX_LENGTH = lfpSignals[0].length;
 
   useEffect(() => {
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
-      if (counterRef.current < lfpSignals[0].length - 1) {
-        counterRef.current += 1;
-      } else {
+      if (counterRef.current === MAX_LENGTH) {
         counterRef.current = 0;
+      } else {
+        counterRef.current += 1;
       }
 
       if (dataset.data.length === MAX_LENGTH) {
@@ -46,6 +35,7 @@ const RawSignal = ({
         x: ((value as ScatterDataPoint).x -= 1),
         y: (value as ScatterDataPoint).y,
       }));
+
       dataset.data.push({ x: 0, y: lfpSignals[index][counterRef.current] });
     });
 
@@ -69,7 +59,14 @@ const RawSignal = ({
             labels: Array.from(Array(MAX_LENGTH).keys())
               .map((value) => value * -1)
               .reverse(),
-            datasets,
+            datasets: [
+              {
+                borderColor: '#61586F',
+                borderWidth: 2,
+                data: [],
+                pointRadius: 0,
+              },
+            ],
           }}
           options={{
             animation: {
@@ -90,8 +87,8 @@ const RawSignal = ({
               },
               y: {
                 display: false,
-                min: minmax500.all[signal - 1].min,
-                max: minmax500.all[signal - 1].max,
+                min: minmax.all[signal - 1].min,
+                max: minmax.all[signal - 1].max,
               },
             },
           }}

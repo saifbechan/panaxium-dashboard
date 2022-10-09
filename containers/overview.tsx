@@ -8,7 +8,6 @@ import RhythmAll from '../components/RhythmAll';
 import RhythmByBand from '../components/RhythmByBand';
 import RhythmByChannel from '../components/RhythmByChannel';
 import SectionToggles from '../components/SectionToggles';
-import rawSignalsExtra from '../lib/raw-signals-extra';
 
 const Overview = () => {
   const displaySignals = useAtomValue(displaySignalsState);
@@ -24,7 +23,7 @@ const Overview = () => {
           md: 'repeat(12, minmax(0, 1fr))',
         }}
       >
-        <RhythmAll datasets={rawSignalsExtra} />
+        <RhythmAll />
 
         <RhythmByChannel />
       </Grid>

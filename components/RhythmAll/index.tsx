@@ -1,40 +1,32 @@
 import { Box, Collapse } from '@chakra-ui/react';
-import { BubbleDataPoint, ChartDataset, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
+import { ScatterDataPoint } from 'chart.js';
 import { sectionTogglesState, ticksState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals from '../../data/lfp-signals-250';
-import minmax500 from '../../lib/min-max-250';
+import minmax from '../../lib/min-max-250';
 
-const RhythmAll = ({
-  datasets,
-}: {
-  datasets: ChartDataset<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[]>[];
-}) => {
+const RhythmAll = () => {
   const ticks = useAtomValue(ticksState);
-
-  const chartRef =
-    useRef<
-      ChartJSOrUndefined<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[], unknown>
-    >();
+  const chartRef = useRef<ChartJSOrUndefined<'line', ScatterDataPoint[], unknown>>();
   const sectionToggles = useAtomValue(sectionTogglesState);
 
   const counterRef = useRef(0);
   const avgRef = useRef(0);
 
-  const MAX_LENGTH = 100;
+  const MAX_LENGTH = lfpSignals[0].length;
 
   useEffect(() => {
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
-      if (counterRef.current < lfpSignals[0].length - 1) {
-        counterRef.current += 1;
-      } else {
+      if (counterRef.current === MAX_LENGTH) {
         counterRef.current = 0;
+      } else {
+        counterRef.current += 1;
       }
 
       dataset.data.map((value) => ({
@@ -56,6 +48,7 @@ const RhythmAll = ({
     });
 
     chartRef.current.update();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ticks]);
 
   return useMemo(
@@ -69,7 +62,21 @@ const RhythmAll = ({
                 labels: Array.from(Array(MAX_LENGTH).keys())
                   .map((value) => value * -1)
                   .reverse(),
-                datasets,
+                datasets: [
+                  {
+                    borderColor: '#48438C',
+                    borderWidth: 2,
+                    data: [],
+                    pointRadius: 0,
+                  },
+                ].concat(
+                  [...new Array(128)].map(() => ({
+                    borderColor: '#61586F',
+                    borderWidth: 0.5,
+                    data: [],
+                    pointRadius: 0,
+                  }))
+                ),
               }}
               options={{
                 animation: {
@@ -90,8 +97,8 @@ const RhythmAll = ({
                   },
                   y: {
                     display: false,
-                    min: minmax500.sum.min,
-                    max: minmax500.sum.max,
+                    min: minmax.sum.min,
+                    max: minmax.sum.max,
                   },
                 },
               }}
