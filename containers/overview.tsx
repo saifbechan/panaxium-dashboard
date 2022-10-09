@@ -1,5 +1,5 @@
 import { GAP } from '../lib/constants';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, Spacer } from '@chakra-ui/react';
 import { displaySignalsState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import BiomarkerDetection from '../components/BiomarkerDetection';
@@ -27,7 +27,17 @@ const Overview = () => {
         <RhythmAll datasets={rawSignalsExtra} />
 
         <RhythmByChannel />
+      </Grid>
 
+      <Spacer h={2} />
+
+      <Grid
+        gap={GAP}
+        templateColumns={{
+          base: '1fr',
+          md: 'repeat(12, minmax(0, 1fr))',
+        }}
+      >
         <RhythmByBand />
 
         <Connectivity />
