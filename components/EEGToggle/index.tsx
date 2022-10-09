@@ -9,7 +9,7 @@ const EEGToggle = () => {
     <Box backgroundColor="#29293B" mb={4} padding="8px" w="100%">
       <FormControl alignItems="center" display="flex">
         <FormLabel fontSize="sm" mb="0">
-          Display EEG
+          All Channels
         </FormLabel>
         <Switch
           colorScheme="purple"
