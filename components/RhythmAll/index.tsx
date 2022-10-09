@@ -7,8 +7,8 @@ import { sectionTogglesState, ticksState } from '../../lib/store';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
-import lfpSignals from '../../data/lfp-signals-500';
-import minmax500 from '../../lib/min-max-500';
+import lfpSignals from '../../data/lfp-signals-250';
+import minmax500 from '../../lib/min-max-250';
 
 const RhythmAll = ({
   datasets,

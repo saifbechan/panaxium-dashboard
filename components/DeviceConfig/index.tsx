@@ -21,6 +21,8 @@ const DeviceConfig = ({
     const ticksRef = useRef(0);
 
     useEffect(() => {
+      if (ticks % 2 !== 0) return;
+
       ticksRef.current = ticksRef.current < 19 ? ticksRef.current + 1 : 0;
     }, [ticks]);
 

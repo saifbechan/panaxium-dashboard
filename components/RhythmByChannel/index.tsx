@@ -22,6 +22,8 @@ const RhythmByChannel = () => {
   const pointer = useRef(0);
 
   useEffect(() => {
+    if (ticks % 2 !== 0) return;
+
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset) => {

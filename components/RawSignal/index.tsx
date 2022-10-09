@@ -7,8 +7,8 @@ import { selectedSignalState, ticksState } from '../../lib/store';
 import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
-import lfpSignals from '../../data/lfp-signals-500';
-import minmax500 from '../../lib/min-max-500';
+import lfpSignals from '../../data/lfp-signals-250';
+import minmax500 from '../../lib/min-max-250';
 
 const RawSignal = ({
   datasets,
@@ -30,6 +30,8 @@ const RawSignal = ({
   const MAX_LENGTH = 20;
 
   useEffect(() => {
+    if (ticks % 2 !== 0) return;
+
     if (chartRef.current === null || chartRef.current === undefined) return;
 
     chartRef.current.data.datasets.forEach((dataset, index) => {
