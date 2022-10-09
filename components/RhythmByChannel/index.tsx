@@ -58,7 +58,7 @@ const RhythmByChannel = () => {
             size="xs"
             variant="outlined"
           >
-            {['HFO'].map((_item, index) => (
+            {[...Array(128)].map((_item, index) => (
               <option key={index}>Channel {index + 1}</option>
             ))}
           </Select>
