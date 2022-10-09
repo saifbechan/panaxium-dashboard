@@ -4,15 +4,11 @@ import { displaySignalsState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import BiomarkerDetection from '../components/BiomarkerDetection';
 import Connectivity from '../components/Connectivity';
+import RhythmAll from '../components/RhythmAll';
 import RhythmByBand from '../components/RhythmByBand';
 import RhythmByChannel from '../components/RhythmByChannel';
 import SectionToggles from '../components/SectionToggles';
-import dynamic from 'next/dynamic';
 import rawSignalsExtra from '../lib/raw-signals-extra';
-
-const RhythmAllNoSSR = dynamic(() => import('../components/RhythmAll'), {
-  ssr: false,
-});
 
 const Overview = () => {
   const displaySignals = useAtomValue(displaySignalsState);
@@ -28,7 +24,7 @@ const Overview = () => {
           md: 'repeat(12, minmax(0, 1fr))',
         }}
       >
-        <RhythmAllNoSSR datasets={rawSignalsExtra} />
+        <RhythmAll datasets={rawSignalsExtra} />
 
         <RhythmByChannel />
 

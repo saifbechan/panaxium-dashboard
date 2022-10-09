@@ -83,7 +83,7 @@ const RhythmAll = ({
                 scales: {
                   x: {
                     display: false,
-                    min: -59,
+                    min: -56,
                     max: 0,
                   },
                   y: {

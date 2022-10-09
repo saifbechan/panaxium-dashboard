@@ -83,7 +83,7 @@ const DeviceConfig = ({
     </VStack>
   );
   return (
-    <HStack alignItems="flex-start" justifyContent="center" spacing={10}>
+    <HStack alignItems="flex-start" justifyContent="center" mb={2} spacing={10}>
       <Grid gap={4} gridTemplateColumns="repeat(4, 1fr)">
         <FiveDots indexes={[0, 1, 2, 3, 4]} />
         <FourDots indexes={[5, 6, 7, 8]} />
