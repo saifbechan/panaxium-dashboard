@@ -14,7 +14,7 @@ import {
 } from 'chart.js';
 import { GAP } from '../lib/constants';
 import { Grid, GridItem } from '@chakra-ui/react';
-import { profileOpenState } from '../lib/store';
+import { displaySignalsState, profileOpenState } from '../lib/store';
 import { useAtomValue } from 'jotai';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Handle from '../components/Profile/handle';
@@ -40,6 +40,8 @@ Chart.register(
 );
 
 const Home: NextPage = () => {
+  const displaySignals = useAtomValue(displaySignalsState);
+
   const profileOpen = useAtomValue(profileOpenState);
 
   return (
@@ -52,9 +54,7 @@ const Home: NextPage = () => {
     >
       <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>
 
-      <RawSignals />
-
-      <Overview />
+      {displaySignals ? <RawSignals /> : <Overview />}
     </Grid>
   );
 };
