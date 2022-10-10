@@ -45,7 +45,7 @@ const RhythmByChannel = () => {
         in={sectionToggles['rhythm_channel']}
         style={{ gridColumn: 'span 6' }}
       >
-        <Section border="1px solid #401D56" info="Some extra information" title="Rhythm by channel">
+        <Section border="1px solid #401D56" id="rhythm_channel" title="Rhythm by channel">
           <Select
             backgroundColor="#401D56"
             border="1px solid gray"

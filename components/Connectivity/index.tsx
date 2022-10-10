@@ -13,7 +13,7 @@ const Connectivity = () => {
 
   return (
     <Collapse animateOpacity in={sectionToggles['connectivity']} style={{ gridColumn: 'span 4' }}>
-      <Section border="1px solid #401D56" info="Some extra information" title="Connectivity">
+      <Section border="1px solid #401D56" id="connectivity" title="Connectivity">
         <Stack align="center" direction="row" justifyContent="center" spacing={4}>
           <Button
             _hover={{ backgroundColor: '#48438C' }}

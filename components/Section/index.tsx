@@ -1,17 +1,20 @@
-import { Box, ChakraProps, GridItem, HStack, Icon, Text, Tooltip } from '@chakra-ui/react';
-import { BsQuestionCircle } from 'react-icons/bs';
+import { Box, ChakraProps, CloseButton, GridItem, HStack, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { SectionToggleIds, sectionTogglesState } from '../../lib/store';
+import { useAtom } from 'jotai';
 
 const Section = ({
   title,
-  info,
+  id,
   children,
   ...props
 }: {
   title?: string;
-  info?: string;
+  id?: keyof SectionToggleIds;
   children: ReactNode;
 } & ChakraProps) => {
+  const [sectionToggles, setSectionTogglesState] = useAtom(sectionTogglesState);
+
   return (
     <GridItem height="100%">
       <Box
@@ -21,7 +24,7 @@ const Section = ({
         padding={2}
         {...props}
       >
-        {title || info ? (
+        {title || id ? (
           <HStack justifyContent="space-between" justifyItems="center" mb={4}>
             {title ? (
               <Text
@@ -38,12 +41,17 @@ const Section = ({
               <></>
             )}
 
-            {info ? (
-              <Tooltip hasArrow label={info}>
-                <div>
-                  <Icon as={BsQuestionCircle} color="text.dimmed" />
-                </div>
-              </Tooltip>
+            {id ? (
+              <CloseButton
+                colorScheme="facebook"
+                size="sm"
+                onClick={() =>
+                  setSectionTogglesState({
+                    ...sectionToggles,
+                    [id]: !sectionToggles[id],
+                  })
+                }
+              />
             ) : (
               <></>
             )}

@@ -49,7 +49,7 @@ const RhythmAll = () => {
 
   return (
     <Collapse animateOpacity in={sectionToggles['rhythm_all']} style={{ gridColumn: 'span 6' }}>
-      <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
+      <Section border="1px solid #401D56" id="rhythm_all" title="All Signals">
         <Box margin="0 -5px 0 -5px">
           {useMemo(
             () => (

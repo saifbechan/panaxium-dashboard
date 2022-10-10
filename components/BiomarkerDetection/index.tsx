@@ -14,7 +14,7 @@ const BiomarkerDetection = () => {
       in={sectionToggles['biomarker_detection']}
       style={{ gridColumn: 'span 4' }}
     >
-      <Section border="1px solid #401D56" info="Some extra information" title="All Signals">
+      <Section border="1px solid #401D56" id="biomarker_detection" title="All Signals">
         <Select
           backgroundColor="#401D56"
           border="1px solid gray"

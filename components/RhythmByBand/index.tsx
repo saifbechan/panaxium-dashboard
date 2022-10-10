@@ -10,7 +10,7 @@ const RhythmByBand = () => {
 
   return (
     <Collapse animateOpacity in={sectionToggles['rhythm_band']} style={{ gridColumn: 'span 4' }}>
-      <Section border="1px solid #401D56" info="Some extra information" title="Rhythm by band">
+      <Section border="1px solid #401D56" id="rhythm_band" title="Rhythm by band">
         <Select
           backgroundColor="#401D56"
           border="1px solid gray"
