@@ -14,8 +14,14 @@ import {
 } from 'chart.js';
 import { GAP } from '../lib/constants';
 import { Grid, GridItem } from '@chakra-ui/react';
-import { displaySignalsState, profileOpenState } from '../lib/store';
+import {
+  SectionToggleIds,
+  displaySignalsState,
+  profileOpenState,
+  sectionTogglesState,
+} from '../lib/store';
 import { useAtomValue } from 'jotai';
+import AllSignals from '../containers/all-signals';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Handle from '../components/Profile/handle';
 import Overview from '../containers/overview';
@@ -40,9 +46,16 @@ Chart.register(
 );
 
 const Home: NextPage = () => {
-  const displaySignals = useAtomValue(displaySignalsState);
-
   const profileOpen = useAtomValue(profileOpenState);
+  const displaySignals = useAtomValue(displaySignalsState);
+  const sectionToggles = useAtomValue(sectionTogglesState);
+
+  const areTrue: string[] = [];
+  Object.keys(sectionToggles).forEach((key) => {
+    if (sectionToggles[key as keyof SectionToggleIds]) {
+      areTrue.push(key);
+    }
+  });
 
   return (
     <Grid
@@ -54,7 +67,13 @@ const Home: NextPage = () => {
     >
       <GridItem transition="all 1s">{profileOpen ? <Profile /> : <Handle />}</GridItem>
 
-      {displaySignals ? <RawSignals /> : <Overview />}
+      {displaySignals ? (
+        <RawSignals />
+      ) : areTrue.length === 1 && areTrue[0] === 'rhythm_all' ? (
+        <AllSignals />
+      ) : (
+        <Overview />
+      )}
     </Grid>
   );
 };
