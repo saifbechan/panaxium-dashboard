@@ -8,7 +8,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals250 from '../../data/lfp-signals-250';
 import lfpSignalsAVG from '../../data/lfp-signals-avg';
-import minmax from '../../lib/min-max-250';
+import minmax from '../../data/min-max-250';
 
 const RhythmAll = () => {
   const sectionToggles = useAtomValue(sectionTogglesState);

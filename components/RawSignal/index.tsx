@@ -7,7 +7,7 @@ import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import Section from '../Section';
 import lfpSignals from '../../data/lfp-signals-250';
-import minmax from '../../lib/min-max-250';
+import minmax from '../../data/min-max-250';
 
 const RawSignal = ({ signal }: { signal: number }) => {
   const [selectedSignal, setSelectedSignal] = useAtom(selectedSignalState);
@@ -27,8 +27,8 @@ const RawSignal = ({ signal }: { signal: number }) => {
       counterRef.current += 1;
     }
 
-    chartRef.current.data.datasets.forEach((dataset, index) => {
-      dataset.data.push({ x: 0, y: lfpSignals[index][counterRef.current] });
+    chartRef.current.data.datasets.forEach((dataset) => {
+      dataset.data.push({ x: 0, y: lfpSignals[signal - 1][counterRef.current] });
 
       dataset.data.map((value) => ({
         x: ((value as ScatterDataPoint).x -= 1),
@@ -62,7 +62,7 @@ const RawSignal = ({ signal }: { signal: number }) => {
               datasets: [
                 {
                   borderColor: '#61586F',
-                  borderWidth: 2,
+                  borderWidth: 1,
                   data: lfpSignals[signal - 1]
                     .slice()
                     .reverse()
