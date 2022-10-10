@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const timerRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
-    timerRef.current = setInterval(() => setTicks((ticks) => ticks + 1), 250);
+    timerRef.current = setInterval(() => setTicks((ticks) => ticks + 1), 100);
 
     return () => clearInterval(timerRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps

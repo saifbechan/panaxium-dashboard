@@ -1,5 +1,4 @@
 import { Box, Collapse, Select, Spacer } from '@chakra-ui/react';
-import { BubbleDataPoint, ScatterDataPoint } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
 import { sectionTogglesState, ticksState } from '../../lib/store';
@@ -13,16 +12,13 @@ const RhythmByChannel = () => {
 
   const sectionToggles = useAtomValue(sectionTogglesState);
 
-  const chartRef =
-    useRef<
-      ChartJSOrUndefined<'line', (number | ScatterDataPoint | BubbleDataPoint | null)[], unknown>
-    >();
+  const chartRef = useRef<ChartJSOrUndefined<'line', number[], unknown>>();
   const labels = ['Delta', 'Theta', 'Alpha', 'Beta', 'Gamma'];
 
   const pointer = useRef(0);
 
   useEffect(() => {
-    if (ticks % 2 !== 0) return;
+    if (ticks % 5 !== 0) return;
 
     if (chartRef.current === null || chartRef.current === undefined) return;
 
